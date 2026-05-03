@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>StockFlow - Caisse</title>
+    <link rel="stylesheet" href="../css/caisse.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <div class="logo">
+        <img src="../Logo/logo.png" alt="Logo StockFlow">
+        <span>StockFlow</span>
+    </div>
+
+    <div class="menu-item" onclick="window.location.href='accueil.html'">🏠 Accueil</div>
+    <div class="menu-item active">💰 Caisse</div>
+    <div class="menu-item" onclick="window.location.href='stock.html'">📦 Stock</div>
+    <div class="menu-item" onclick="window.location.href='magasin.html'">🏪 Magasin</div>
+
+    <br><br>
+    <div class="menu-item" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'">🚪 Déconnexion</div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <h2>Caisse</h2>
+
+    <div class="container">
+
+        <!-- GAUCHE -->
+        <div class="left">
+
+            <!-- AJOUT PRODUIT -->
+            <div class="card">
+                <h3>Ajouter un produit</h3>
+
+                <input type="text" id="code" placeholder="Scanner ou saisir code">
+                <button id="ajouter-btn">Ajouter</button>
+
+                <br><br>
+
+                <input type="number" id="quantite" value="1" min="1">
+            </div>
+
+            <!-- PANIER -->
+            <div class="card">
+                <h3>Panier</h3>
+                <div id="panier"></div>
+            </div>
+
+        </div>
+
+        <!-- DROITE -->
+        <div class="right">
+
+            <!-- TOTAL -->
+            <div class="card">
+                <h3>Total du jour</h3>
+                <h2 id="total">0€</h2>
+                <button id="fin-journee-btn">Fin de journée</button>
+            </div>
+
+            <!-- HISTORIQUE -->
+            <div class="card">
+                <h3>Historique</h3>
+                <div id="historique"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/caisse.js"></script>
+</body>
+</html>

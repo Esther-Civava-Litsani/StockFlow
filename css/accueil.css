@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #f5f7fb;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: #ffffff;
+    height: 100vh;
+    padding: 24px 20px;
+    border-right: 1px solid #eceff4;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #1d3f7f;
+    font-size: 1.05rem;
+}
+
+.sidebar .logo img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+}
+
+.menu-item {
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #5a6375;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #e8f0ff;
+    color: #2d6cdf;
+}
+
+.main {
+    flex: 1;
+    padding: 28px 32px;
+}
+
+.header small {
+    color: #6b7280;
+}
+
+.header h1 {
+    margin: 8px 0 24px;
+    font-size: 2rem;
+    color: #112b4e;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 26px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08);
+}
+
+.card-title {
+    font-size: 0.8rem;
+    color: #7a889b;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.card-value {
+    font-size: 2.05rem;
+    font-weight: 700;
+    color: #162d52;
+    margin-top: 14px;
+}
+
+.sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.06);
+}
+
+.box-title {
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #172a4d;
+}
+
+.item {
+    padding: 12px 0;
+    border-bottom: 1px solid #eef1f7;
+    font-size: 0.95rem;
+    color: #4c5975;
+}
+
+.item:last-child {
+    border-bottom: none;
+}
+
+.badge {
+    float: right;
+    background: #fff2e4;
+    color: #c75c00;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 760px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #eceff4;
+    }
+
+    .main {
+        padding: 22px;
+    }
+}
+
+body.empty {
+    background: #ffffff;
+}
+
+body.empty .sidebar,
+body.empty .main {
+    display: none;
+}

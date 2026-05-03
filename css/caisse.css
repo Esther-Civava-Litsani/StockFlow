@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial;
+    background: #f5f7fb;
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: #ffffff;
+    height: 100vh;
+    padding: 24px 20px;
+    border-right: 1px solid #eceff4;
+}
+
+.sidebar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #1d3f7f;
+    font-size: 1.05rem;
+}
+
+.sidebar .logo img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+}
+
+.menu-item {
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #5a6375;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu-item:hover,
+.menu-item.active {
+    background-color: #e8f0ff;
+    color: #2d6cdf;
+}
+
+.main {
+    flex: 1;
+    padding: 28px 32px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}
+
+.left {
+    flex: 2;
+}
+
+.right {
+    flex: 1;
+}
+
+.card {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08);
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #172a4d;
+}
+
+input {
+    width: 70%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #d4dbea;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #7b9cff;
+    box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12);
+}
+
+button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    background: #4da6ff;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background: #3f8ce8;
+}
+
+.panier-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eef1f7;
+    color: #4c5975;
+}
+
+.panier-item:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 760px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #eceff4;
+    }
+
+    .main {
+        padding: 22px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+}
