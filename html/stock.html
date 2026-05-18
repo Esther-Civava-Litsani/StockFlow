@@ -17,14 +17,14 @@
     </div> <!-- Fin du conteneur logo -->
 
     <!-- Éléments du menu -->
-    <div class="elementMenu" onclick="window.location.href='accueil.html'"><i class="fas fa-home"></i> Accueil</div> <!-- Élément menu pour Accueil -->
-    <div class="elementMenu" onclick="window.location.href='caisse.html'"><i class="fas fa-cash-register"></i> Caisse</div> <!-- Élément menu pour Caisse -->
-    <div class="elementMenu active"><i class="fas fa-boxes"></i> Stock</div> <!-- Élément menu actif pour Stock -->
-    <div class="elementMenu" onclick="window.location.href='magasin.html'"><i class="fas fa-store"></i> Magasin</div> <!-- Élément menu pour Magasin -->
+    <a href="accueil.html" class="elementMenu"><i class="fas fa-home"></i> Accueil</a> <!-- Élément menu pour Accueil -->
+    <a href="caisse.html" class="elementMenu"><i class="fas fa-cash-register"></i> Caisse</a> <!-- Élément menu pour Caisse -->
+    <a href="stock.html" class="elementMenu active"><i class="fas fa-boxes"></i> Stock</a> <!-- Élément menu actif pour Stock -->
+    <a href="magasin.html" class="elementMenu"><i class="fas fa-store"></i> Magasin</a> <!-- Élément menu pour Magasin -->
 
     <br><br> <!-- Sauts de ligne pour espacement -->
     <!-- Bouton de déconnexion -->
-    <div class="elementMenu" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
+    <div class="elementMenu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
 </div> <!-- Fin de la barre latérale -->
 
 <!-- Contenu principal de la page -->
@@ -73,6 +73,7 @@
 </div> <!-- Fin du contenu principal -->
 
 <!-- Inclusion du script JavaScript -->
+<script src="../js/common.js"></script> <!-- Script partagé pour la connexion et la déconnexion -->
 <script src="../js/stock.js"></script> <!-- Script JavaScript pour la page -->
 </body> <!-- Fin du corps -->
 </html> <!-- Fin du document HTML -->

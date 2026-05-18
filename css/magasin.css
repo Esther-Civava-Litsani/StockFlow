@@ -35,6 +35,8 @@ body { /* Styles pour le corps de la page */
 }
 
 .elementMenu { /* Styles pour les éléments du menu */
+    display: block;
+    width: 100%;
     padding: 12px 14px; /* Espacement interne */
     border-radius: 12px; /* Bordures arrondies */
     margin-bottom: 10px; /* Marge inférieure */

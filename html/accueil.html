@@ -4,29 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockFlow - Accueil</title>
-    <!-- Lien vers le CSS et vers Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="../css/accueil.css"> 
+    <link rel="stylesheet" href="../css/accueil.css">
+
+    <!-- Lien vers Font Awesome pour les icônes -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
 </head>
 <body>
     <!-- Barre latérale de navigation -->
-    <div class="barre">
-        <img src="../Logo/logo.png" alt="Logo StockFlow">
-        <span>StockFlow</span>
+    <div class="barre"> 
+        <!-- Logo -->
+        <div class="logo">
+            <img src="../Logo/logo.png" alt="Logo StockFlow">
+            <span>StockFlow</span> 
+        </div>
+        <!-- Éléments du menu -->
+        <a href="accueil.html" class="Menu active"><i class="fas fa-home"></i> Accueil</a>
+        <a href="caisse.html" class="Menu"><i class="fas fa-cash-register"></i> Caisse</a>
+        <a href="stock.html" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
+        <a href="magasin.html" class="Menu"><i class="fas fa-store"></i> Magasin</a>
+        <br><br>
+        <!-- Bouton de déconnexion -->
+        <a href="deconnexion.html" class="Menu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
 
-    <!-- Éléments du menu -->
+    <!-- Contenu principal de la page -->
+    <div class="principal">
+        <!-- En-tête de la page -->
+        <div class="entete">
+            <small>Bonjour <i class="fas fa-hand-paper"></i></small>
+            <h1 id="nomBoutique">Nom de la boutique</h1>
+        </div>
+        <br><br>
+        <!-- Statistiques -->
+        <div class="cartes">
+            <div class="carte">
+                <h2>PRODUITS</h2>
+                <h3 class="valeur" id="produits">0</h3>
+            </div>
 
-    <a href="accueil.html" class="active"><i class="fas fa-home"></i> Accueil</a>
-    <a href="caisse.html" ><i class="fas fa-cash-register"></i> Caisse</a>
-    <a href="stock.html"><i class="fas fa-boxes"></i> Stock</a>
-    <a href="magasin.html"><i class="fas fa-store"></i> Magasin</a> 
+            <div class="carte">
+                <h2>VENTES AUJOURD'HUI</h2>
+                <h3 class="valeur" id="ventes">0</h3>
+            </div>
 
-    <br><br> <!-- Sauts de ligne pour espacement -->
-    <!-- Bouton de déconnexion -->
-    <div class="elementMenu" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
-</div> <!-- Fin de la barre latérale -->
-
-    
+            <div class="carte">
+                    <h2>RECETTE DU JOUR</h2>
+                    <h3 class="valeur" id="recette">0</h3>
+            </div>
+        </div>
+        <!-- Informations -->
+        <div class="sections">
+            <!-- Ruptures de stock -->
+            <div class="boite">
+                <h2><i class="fas fa-exclamation-triangle"></i> Ruptures de stock</h2>
+                <div id="ruptures"></div>
+            </div>
+            <!-- Produits bientôt expirés -->
+            <div class="boite">
+                <h2><i class="fas fa-clock"></i> Bientôt expirés</h2>
+                <div id="expires"></div>
+            </div>
+        </div>
+    </div> 
+</div>
+<script src="../js/accueil.js"></script>
 </body>
 </html>
