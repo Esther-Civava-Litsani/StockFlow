@@ -1,106 +1,154 @@
-const tabs = document.querySelectorAll('.bouton');
-const forms = document.querySelectorAll('form');
-const messageBox = document.getElementById('message');
-const showField = document.getElementById('show-password');
+// Sélectionner tous les boutons d'onglets
+const onglets = document.querySelectorAll('.bouton');
+// Sélectionner tous les formulaires
+const formulaires = document.querySelectorAll('form');
+// Sélectionner la boîte de message
+const boiteMessage = document.getElementById('message');
+// Sélectionner le champ pour afficher le mot de passe
+const champAfficherMotDePasse = document.getElementById('show-password');
 
-function switchTab(tab) {
-    tabs.forEach(button => button.classList.toggle('active', button.dataset.tab === tab));
-    forms.forEach(form => form.classList.toggle('active', form.id === tab + '-form'));
-    clearMessage();
+// Fonction pour changer d'onglet
+function changerOnglet(onglet) {
+    // Pour chaque bouton, activer si correspond à l'onglet
+    onglets.forEach(bouton => bouton.classList.toggle('active', bouton.dataset.tab === onglet));
+    // Pour chaque formulaire, activer si correspond à l'onglet
+    formulaires.forEach(formulaire => formulaire.classList.toggle('active', formulaire.id === onglet + '-form'));
+    // Effacer le message
+    effacerMessage();
 }
 
-function clearMessage() {
-    messageBox.style.display = 'none';
-    messageBox.textContent = '';
-    messageBox.classList.remove('error');
+// Fonction pour effacer le message
+function effacerMessage() {
+    // Masquer la boîte de message
+    boiteMessage.style.display = 'none';
+    // Vider le texte
+    boiteMessage.textContent = '';
+    // Retirer la classe d'erreur
+    boiteMessage.classList.remove('error');
 }
 
-function showMessage(text, isError = false) {
-    messageBox.textContent = text;
-    messageBox.classList.toggle('error', isError);
-    messageBox.style.display = 'block';
+// Fonction pour afficher un message
+function afficherMessage(texte, estErreur = false) {
+    // Définir le texte du message
+    boiteMessage.textContent = texte;
+    // Ajouter/retirer la classe d'erreur
+    boiteMessage.classList.toggle('error', estErreur);
+    // Afficher la boîte
+    boiteMessage.style.display = 'block';
 }
 
-function getStoredAccount(shopName) {
-    if (!shopName) return null;
-    const stored = localStorage.getItem(`stockflow_account_${shopName}`);
-    return stored ? JSON.parse(stored) : null;
+// Fonction pour récupérer un compte stocké
+function recupererCompteStocke(nomBoutique) {
+    // Si pas de nom, retourner null
+    if (!nomBoutique) return null;
+    // Récupérer depuis localStorage
+    const stocke = localStorage.getItem(`stockflow_account_${nomBoutique}`);
+    // Retourner parsé ou null
+    return stocke ? JSON.parse(stocke) : null;
 }
 
-function createAccount(event) {
-    event.preventDefault();
-    clearMessage();
+// Fonction pour créer un compte
+function creerCompte(evenement) {
+    // Empêcher le comportement par défaut
+    evenement.preventDefault();
+    // Effacer le message
+    effacerMessage();
 
-    const shopName = document.getElementById('creation-shop').value.trim();
+    // Récupérer les valeurs des champs
+    const nomBoutique = document.getElementById('creation-shop').value.trim();
     const email = document.getElementById('creation-email').value.trim();
-    const password = document.getElementById('creation-password').value;
+    const motDePasse = document.getElementById('creation-password').value;
 
-    if (shopName.length < 2) {
-        showMessage('Le nom de la boutique doit contenir au moins 2 caractères.', true);
+    // Validation du nom de boutique
+    if (nomBoutique.length < 2) {
+        afficherMessage('Le nom de la boutique doit contenir au moins 2 caractères.', true);
         return;
     }
 
+    // Validation de l'email
     if (!email.includes('@')) {
-        showMessage('Veuillez saisir une adresse e-mail valide.', true);
+        afficherMessage('Veuillez saisir une adresse e-mail valide.', true);
         return;
     }
 
-    if (password.length < 6) {
-        showMessage('Le mot de passe doit contenir au moins 6 caractères.', true);
+    // Validation du mot de passe
+    if (motDePasse.length < 6) {
+        afficherMessage('Le mot de passe doit contenir au moins 6 caractères.', true);
         return;
     }
 
-    if (getStoredAccount(shopName)) {
-        showMessage('Cette boutique existe déjà. Essayez de vous connecter.', true);
-        switchTab('connexion');
+    // Vérifier si le compte existe déjà
+    if (recupererCompteStocke(nomBoutique)) {
+        afficherMessage('Cette boutique existe déjà. Essayez de vous connecter.', true);
+        changerOnglet('connexion');
         return;
     }
 
-    const account = {
-        shopName,
+    // Créer l'objet compte
+    const compte = {
+        nomBoutique,
         email,
-        password
+        motDePasse
     };
 
-    localStorage.setItem(`stockflow_account_${shopName}`, JSON.stringify(account));
-    localStorage.setItem('boutique', shopName);
+    // Stocker dans localStorage
+    localStorage.setItem(`stockflow_account_${nomBoutique}`, JSON.stringify(compte));
+    // Définir la boutique actuelle
+    localStorage.setItem('boutique', nomBoutique);
+    // Réinitialiser le formulaire
     document.getElementById('creation-form').reset();
+    // Rediriger vers l'accueil
     window.location.href = 'accueil.html';
 }
 
-function login(event) {
-    event.preventDefault();
-    clearMessage();
+// Fonction pour se connecter
+function seConnecter(evenement) {
+    // Empêcher le comportement par défaut
+    evenement.preventDefault();
+    // Effacer le message
+    effacerMessage();
 
-    const shopName = document.getElementById('connexion-shop').value.trim();
-    const password = document.getElementById('connexion-password').value;
+    // Récupérer les valeurs
+    const nomBoutique = document.getElementById('connexion-shop').value.trim();
+    const motDePasse = document.getElementById('connexion-password').value;
 
-    const account = getStoredAccount(shopName);
-    if (!account) {
-        showMessage('Boutique introuvable. Créez d’abord votre boutique.', true);
-        switchTab('creation');
+    // Récupérer le compte
+    const compte = recupererCompteStocke(nomBoutique);
+    // Si pas de compte
+    if (!compte) {
+        afficherMessage('Boutique introuvable. Créez d’abord votre boutique.', true);
+        changerOnglet('creation');
         return;
     }
 
-    if (account.password !== password) {
-        showMessage('Mot de passe incorrect. Réessayez.', true);
+    // Vérifier le mot de passe
+    if (compte.motDePasse !== motDePasse) {
+        afficherMessage('Mot de passe incorrect. Réessayez.', true);
         return;
     }
 
-    localStorage.setItem('boutique', account.shopName);
+    // Définir la boutique actuelle
+    localStorage.setItem('boutique', compte.nomBoutique);
+    // Réinitialiser le formulaire
     document.getElementById('connexion-form').reset();
+    // Rediriger vers l'accueil
     window.location.href = 'accueil.html';
 }
 
-function togglePassword(event) {
-    const field = document.querySelectorAll('input[type="password"]');
-    field.forEach(input => {
-        input.type = event.target.checked ? 'text' : 'password';
+// Fonction pour basculer l'affichage du mot de passe
+function basculerMotDePasse(evenement) {
+    // Sélectionner tous les champs password
+    const champs = document.querySelectorAll('input[type="password"]');
+    // Pour chaque champ, changer le type
+    champs.forEach(champ => {
+        champ.type = evenement.target.checked ? 'text' : 'password';
     });
 }
 
-switchTab('creation');
+// Changer vers l'onglet création par défaut
+changerOnglet('creation');
 
-document.getElementById('creation-form').addEventListener('submit', createAccount);
-document.getElementById('connexion-form').addEventListener('submit', login);
-document.getElementById('show-password').addEventListener('change', togglePassword);
+// Ajouter les écouteurs d'événements
+document.getElementById('creation-form').addEventListener('submit', creerCompte);
+document.getElementById('connexion-form').addEventListener('submit', seConnecter);
+document.getElementById('show-password').addEventListener('change', basculerMotDePasse);

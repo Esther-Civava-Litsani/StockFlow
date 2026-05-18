@@ -1,80 +1,85 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>StockFlow - Caisse</title>
-    <link rel="stylesheet" href="../css/caisse.css">
-</head>
-<body>
+<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
+<html lang="fr"> <!-- Élément racine HTML avec langue française -->
+<head> <!-- Section d'en-tête du document -->
+    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+    <title>StockFlow - Caisse</title> <!-- Titre de la page -->
+    <link rel="stylesheet" href="../css/caisse.css"> <!-- Lien vers la feuille de style CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
+</head> <!-- Fin de la section head -->
+<body> <!-- Corps du document -->
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <div class="logo">
-        <img src="../Logo/logo.png" alt="Logo StockFlow">
-        <span>StockFlow</span>
-    </div>
+<!-- Barre latérale de navigation -->
+<div class="barreLaterale"> <!-- Conteneur de la barre latérale -->
+    <!-- Logo de l'application -->
+    <div class="logo"> <!-- Conteneur du logo -->
+        <img src="../Logo/logo.png" alt="Logo StockFlow"> <!-- Image du logo -->
+        <span>StockFlow</span> <!-- Texte du logo -->
+    </div> <!-- Fin du conteneur logo -->
 
-    <div class="menu-item" onclick="window.location.href='accueil.html'">🏠 Accueil</div>
-    <div class="menu-item active">💰 Caisse</div>
-    <div class="menu-item" onclick="window.location.href='stock.html'">📦 Stock</div>
-    <div class="menu-item" onclick="window.location.href='magasin.html'">🏪 Magasin</div>
+    <!-- Éléments du menu -->
+    <div class="elementMenu" onclick="window.location.href='accueil.html'"><i class="fas fa-home"></i> Accueil</div> <!-- Élément menu pour Accueil -->
+    <div class="elementMenu active"><i class="fas fa-cash-register"></i> Caisse</div> <!-- Élément menu actif pour Caisse -->
+    <div class="elementMenu" onclick="window.location.href='stock.html'"><i class="fas fa-boxes"></i> Stock</div> <!-- Élément menu pour Stock -->
+    <div class="elementMenu" onclick="window.location.href='magasin.html'"><i class="fas fa-store"></i> Magasin</div> <!-- Élément menu pour Magasin -->
 
-    <br><br>
-    <div class="menu-item" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'">🚪 Déconnexion</div>
-</div>
+    <br><br> <!-- Sauts de ligne pour espacement -->
+    <!-- Bouton de déconnexion -->
+    <div class="elementMenu" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
+</div> <!-- Fin de la barre latérale -->
 
-<!-- MAIN -->
-<div class="main">
+<!-- Contenu principal de la page -->
+<div class="principal"> <!-- Conteneur principal -->
 
-    <h2>Caisse</h2>
+    <h2>Caisse</h2> <!-- Titre de la page -->
 
-    <div class="container">
+    <div class="conteneur"> <!-- Conteneur principal pour la mise en page -->
 
-        <!-- GAUCHE -->
-        <div class="left">
+        <!-- Partie gauche -->
+        <div class="gauche"> <!-- Section gauche -->
 
-            <!-- AJOUT PRODUIT -->
-            <div class="card">
-                <h3>Ajouter un produit</h3>
+            <!-- Ajout de produit -->
+            <div class="carte"> <!-- Carte pour ajouter un produit -->
+                <h3>Ajouter un produit</h3> <!-- Titre de la carte -->
 
-                <input type="text" id="code" placeholder="Scanner ou saisir code">
-                <button id="ajouter-btn">Ajouter</button>
+                <input type="text" id="code" placeholder="Scanner ou saisir code"> <!-- Champ de saisie pour le code -->
+                <button id="ajouter-btn">Ajouter</button> <!-- Bouton pour ajouter -->
 
-                <br><br>
+                <br><br> <!-- Sauts de ligne -->
 
-                <input type="number" id="quantite" value="1" min="1">
-            </div>
+                <input type="number" id="quantite" value="1" min="1"> <!-- Champ pour la quantité -->
+            </div> <!-- Fin de la carte -->
 
-            <!-- PANIER -->
-            <div class="card">
-                <h3>Panier</h3>
-                <div id="panier"></div>
-            </div>
+            <!-- Panier -->
+            <div class="carte"> <!-- Carte pour le panier -->
+                <h3>Panier</h3> <!-- Titre de la carte -->
+                <div id="panier"></div> <!-- Conteneur pour le panier -->
+            </div> <!-- Fin de la carte -->
 
-        </div>
+        </div> <!-- Fin de la partie gauche -->
 
-        <!-- DROITE -->
-        <div class="right">
+        <!-- Partie droite -->
+        <div class="droite"> <!-- Section droite -->
 
-            <!-- TOTAL -->
-            <div class="card">
-                <h3>Total du jour</h3>
-                <h2 id="total">0€</h2>
-                <button id="fin-journee-btn">Fin de journée</button>
-            </div>
+            <!-- Total -->
+            <div class="carte"> <!-- Carte pour le total -->
+                <h3>Total du jour</h3> <!-- Titre de la carte -->
+                <h2 id="total">0€</h2> <!-- Affichage du total -->
+                <button id="fin-journee-btn">Fin de journée</button> <!-- Bouton pour fin de journée -->
+            </div> <!-- Fin de la carte -->
 
-            <!-- HISTORIQUE -->
-            <div class="card">
-                <h3>Historique</h3>
-                <div id="historique"></div>
-            </div>
+            <!-- Historique -->
+            <div class="carte"> <!-- Carte pour l'historique -->
+                <h3>Historique</h3> <!-- Titre de la carte -->
+                <div id="historique"></div> <!-- Conteneur pour l'historique -->
+            </div> <!-- Fin de la carte -->
 
-        </div>
+        </div> <!-- Fin de la partie droite -->
 
-    </div>
+    </div> <!-- Fin du conteneur -->
 
-</div>
+</div> <!-- Fin du contenu principal -->
 
-<script src="../js/caisse.js"></script>
-</body>
-</html>
+<!-- Inclusion du script JavaScript -->
+<script src="../js/caisse.js"></script> <!-- Script JavaScript pour la page -->
+</body> <!-- Fin du corps -->
+</html> <!-- Fin du document HTML -->

@@ -2,73 +2,31 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockFlow - Accueil</title>
-    <link rel="stylesheet" href="../css/accueil.css">
+    <!-- Lien vers le CSS et vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="../css/accueil.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
 </head>
 <body>
-
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <div class="logo">
+    <!-- Barre latérale de navigation -->
+    <div class="barre">
         <img src="../Logo/logo.png" alt="Logo StockFlow">
         <span>StockFlow</span>
     </div>
 
-    <div class="menu-item active">🏠 Accueil</div>
-    <div class="menu-item" onclick="window.location.href='caisse.html'">💰 Caisse</div>
-    <div class="menu-item" onclick="window.location.href='stock.html'">📦 Stock</div>
-    <div class="menu-item" onclick="window.location.href='magasin.html'">🏪 Magasin</div>
+    <!-- Éléments du menu -->
 
-    <br><br>
-    <div class="menu-item" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'">🚪 Déconnexion</div>
-</div>
+    <a href="accueil.html" class="active"><i class="fas fa-home"></i> Accueil</a>
+    <a href="caisse.html" ><i class="fas fa-cash-register"></i> Caisse</a>
+    <a href="stock.html"><i class="fas fa-boxes"></i> Stock</a>
+    <a href="magasin.html"><i class="fas fa-store"></i> Magasin</a> 
 
-<!-- MAIN -->
-<div class="main">
+    <br><br> <!-- Sauts de ligne pour espacement -->
+    <!-- Bouton de déconnexion -->
+    <div class="elementMenu" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
+</div> <!-- Fin de la barre latérale -->
 
-    <!-- HEADER -->
-    <div class="header">
-        <small>Bonjour 👋</small>
-        <h1 id="nomBoutique">Nom de la boutique</h1>
-    </div>
-
-    <!-- CARDS -->
-    <div class="cards">
-
-        <div class="card">
-            <div class="card-title">PRODUITS</div>
-            <div class="card-value" id="produits">0</div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">VENTES AUJOURD'HUI</div>
-            <div class="card-value" id="ventes">0</div>
-        </div>
-
-        <div class="card">
-            <div class="card-title">RECETTE DU JOUR</div>
-            <div class="card-value" id="recette">0</div>
-        </div>
-
-    </div>
-
-    <!-- SECTIONS -->
-    <div class="sections">
-
-        <div class="box">
-            <div class="box-title">⚠️ Ruptures de stock</div>
-            <div id="ruptures"></div>
-        </div>
-
-        <div class="box">
-            <div class="box-title">⏰ Bientôt expirés</div>
-            <div id="expires"></div>
-        </div>
-
-    </div>
-
-</div>
-
-<script src="../js/accueil.js"></script>
+    
 </body>
 </html>

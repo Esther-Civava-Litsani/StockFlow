@@ -4,8 +4,8 @@
 
 body { /* Styles pour le corps de la page */
     margin: 0; /* Supprimer les marges par défaut */
-    font-family: "Segoe UI", Arial; /* Police de caractères */
-    background: #f5f7fb; /* Couleur de fond */
+    font-family: "Segoe UI", Arial, sans-serif; /* Police de caractères */
+    background-color: #f5f7fb; /* Couleur de fond */
     display: flex; /* Utiliser flexbox pour la mise en page */
     min-height: 100vh; /* Hauteur minimale de la fenêtre */
 }
@@ -54,72 +54,32 @@ body { /* Styles pour le corps de la page */
     padding: 28px 32px; /* Espacement interne */
 }
 
-.conteneur { /* Styles pour le conteneur principal */
-    display: flex; /* Flexbox */
-    gap: 20px; /* Espacement entre enfants */
+.entete small { /* Styles pour small dans l'en-tête */
+    color: #6b7280; /* Couleur du texte */
 }
 
-.gauche { /* Styles pour la section gauche */
-    flex: 2; /* Flex-grow */
-}
-
-.droite { /* Styles pour la section droite */
-    flex: 1; /* Flex-grow */
+.entete h1 { /* Styles pour h1 dans l'en-tête */
+    margin: 8px 0 24px; /* Marges */
+    font-size: 2rem; /* Taille de police */
+    color: #112b4e; /* Couleur du texte */
 }
 
 .carte { /* Styles pour les cartes */
     background: #ffffff; /* Fond blanc */
-    padding: 22px; /* Espacement interne */
     border-radius: 16px; /* Bordures arrondies */
+    padding: 22px; /* Espacement interne */
     box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08); /* Ombre */
     margin-bottom: 20px; /* Marge inférieure */
 }
 
-.carte h3 { /* Styles pour les titres h3 dans les cartes */
+.carte h2 { /* Styles pour h2 dans les cartes */
     margin-top: 0; /* Supprimer marge supérieure */
     color: #172a4d; /* Couleur du texte */
 }
 
-input { /* Styles pour les champs input */
-    width: 70%; /* Largeur */
-    padding: 12px; /* Espacement interne */
-    border-radius: 12px; /* Bordures arrondies */
-    border: 1px solid #d4dbea; /* Bordure */
-    font-size: 1rem; /* Taille de police */
-    margin-right: 10px; /* Marge droite */
-}
-
-input:focus { /* Styles au focus pour input */
-    outline: none; /* Supprimer outline par défaut */
-    border-color: #7b9cff; /* Couleur de bordure */
-    box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12); /* Ombre de focus */
-}
-
-button { /* Styles pour les boutons */
-    padding: 12px 16px; /* Espacement interne */
-    border: none; /* Pas de bordure */
-    border-radius: 12px; /* Bordures arrondies */
-    background: #4da6ff; /* Fond bleu */
-    color: white; /* Texte blanc */
-    cursor: pointer; /* Curseur pointeur */
-    font-size: 1rem; /* Taille de police */
-    transition: background-color 0.2s ease; /* Transition */
-}
-
-button:hover { /* Styles au survol pour bouton */
-    background: #3f8ce8; /* Fond plus foncé */
-}
-
-.elementPanier { /* Styles pour les éléments du panier */
-    display: flex; /* Flexbox */
-    justify-content: space-between; /* Espacement entre éléments */
-    padding: 12px 0; /* Espacement interne */
-    border-bottom: 1px solid #eef1f7; /* Bordure inférieure */
-    color: #4c5975; /* Couleur du texte */
-}
-
-.elementPanier:last-child { /* Styles pour le dernier élément du panier */
-    border-bottom: none; /* Pas de bordure */
+.carte p { /* Styles pour p dans les cartes */
+    color: #6b7280; /* Couleur du texte */
+    margin: 10px 0 0; /* Marges */
 }
 
 @media (max-width: 760px) { /* Media query pour écrans petits */
@@ -136,9 +96,5 @@ button:hover { /* Styles au survol pour bouton */
 
     .principal { /* Styles pour principal en responsive */
         padding: 22px; /* Espacement réduit */
-    }
-
-    .conteneur { /* Styles pour conteneur en responsive */
-        flex-direction: column; /* Direction verticale */
     }
 }

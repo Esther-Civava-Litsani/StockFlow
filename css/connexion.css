@@ -1,163 +1,163 @@
-* {
-    box-sizing: border-box;
+* { /* Appliquer box-sizing à tous les éléments */
+    box-sizing: border-box; /* Inclure padding et border dans la largeur/hauteur */
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background: linear-gradient(135deg, #e7f1fd 0%, #f8fbff 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body { /* Styles pour le corps de la page */
+    margin: 0; /* Supprimer les marges par défaut */
+    min-height: 100vh; /* Hauteur minimale de la fenêtre */
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Police de caractères */
+    background: linear-gradient(135deg, #e7f1fd 0%, #f8fbff 100%); /* Fond dégradé */
+    display: flex; /* Utiliser flexbox */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
 }
 
-.tout {
-    width: min(420px, calc(100vw - 32px));
-    background: #ffffff;
-    padding: 28px;
-    border-radius: 18px;
-    box-shadow: 0 16px 40px rgba(22, 94, 211, 0.12);
-    text-align: center;
+.tout { /* Styles pour le conteneur principal */
+    width: min(420px, calc(100vw - 32px)); /* Largeur maximale ou responsive */
+    background: #ffffff; /* Fond blanc */
+    padding: 28px; /* Espacement interne */
+    border-radius: 18px; /* Bordures arrondies */
+    box-shadow: 0 16px 40px rgba(22, 94, 211, 0.12); /* Ombre */
+    text-align: center; /* Texte centré */
 }
 
-.logo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    margin-bottom: 18px;
+.logo { /* Styles pour le logo */
+    display: inline-flex; /* Flexbox en ligne */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    gap: 14px; /* Espacement entre éléments */
+    margin-bottom: 18px; /* Marge inférieure */
 }
 
-.logo img {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
-    margin-bottom: 0;
+.logo img { /* Styles pour l'image du logo */
+    width: 52px; /* Largeur */
+    height: 52px; /* Hauteur */
+    object-fit: contain; /* Ajuster l'image */
+    margin-bottom: 0; /* Supprimer marge inférieure */
 }
 
-.logo h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #153d72;
+.logo h1 { /* Styles pour le titre h1 du logo */
+    margin: 0; /* Supprimer marges */
+    font-size: 2rem; /* Taille de police */
+    color: #153d72; /* Couleur du texte */
 }
 
-.tout p {
-    margin: 16px 0 28px;
-    font-size: 1rem;
-    color: #3f536e;
-    line-height: 1.5;
+.tout p { /* Styles pour les paragraphes dans .tout */
+    margin: 16px 0 28px; /* Marges */
+    font-size: 1rem; /* Taille de police */
+    color: #3f536e; /* Couleur du texte */
+    line-height: 1.5; /* Hauteur de ligne */
 }
 
-.emplacement {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 24px;
+.emplacement { /* Styles pour le conteneur des boutons */
+    display: grid; /* Utiliser grid */
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 12px; /* Espacement entre colonnes */
+    margin-bottom: 24px; /* Marge inférieure */
 }
 
-.bouton {
-    border: 1px solid transparent;
-    background-color: #f0f5ff;
-    color: #2f4f7f;
-    padding: 12px 16px;
-    font-size: 0.96rem;
-    cursor: pointer;
-    border-radius: 12px;
-    transition: all 0.2s ease;
+.bouton { /* Styles pour les boutons */
+    border: 1px solid transparent; /* Bordure transparente */
+    background-color: #f0f5ff; /* Fond bleu clair */
+    color: #2f4f7f; /* Couleur du texte */
+    padding: 12px 16px; /* Espacement interne */
+    font-size: 0.96rem; /* Taille de police */
+    cursor: pointer; /* Curseur pointeur */
+    border-radius: 12px; /* Bordures arrondies */
+    transition: all 0.2s ease; /* Transitions */
 }
 
-.bouton:hover,
-.bouton.active {
-    border-color: #4da6ff;
-    background-color: #eff7ff;
-    color: #1a4fe7;
+.bouton:hover, /* Styles au survol */
+.bouton.active { /* Styles pour bouton actif */
+    border-color: #4da6ff; /* Couleur de bordure */
+    background-color: #eff7ff; /* Fond */
+    color: #1a4fe7; /* Couleur du texte */
 }
 
-form {
-    display: none;
-    flex-direction: column;
-    gap: 14px;
+form { /* Styles pour les formulaires */
+    display: none; /* Masquer par défaut */
+    flex-direction: column; /* Direction verticale */
+    gap: 14px; /* Espacement entre éléments */
 }
 
-form.active {
-    display: flex;
+form.active { /* Styles pour formulaire actif */
+    display: flex; /* Afficher */
 }
 
-input {
-    width: 100%;
-    padding: 13px 14px;
-    border: 1px solid #d4dbea;
-    border-radius: 12px;
-    font-size: 1rem;
-    color: #1c2a48;
-    background: #f8fbff;
+input { /* Styles pour les champs input */
+    width: 100%; /* Largeur pleine */
+    padding: 13px 14px; /* Espacement interne */
+    border: 1px solid #d4dbea; /* Bordure */
+    border-radius: 12px; /* Bordures arrondies */
+    font-size: 1rem; /* Taille de police */
+    color: #1c2a48; /* Couleur du texte */
+    background: #f8fbff; /* Fond */
 }
 
-input:focus {
-    outline: none;
-    border-color: #7b9cff;
-    box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12);
+input:focus { /* Styles au focus pour input */
+    outline: none; /* Supprimer outline */
+    border-color: #7b9cff; /* Couleur de bordure */
+    box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12); /* Ombre de focus */
 }
 
-small {
-    color: #576d8b;
-    text-align: left;
-    display: block;
+small { /* Styles pour les éléments small */
+    color: #576d8b; /* Couleur du texte */
+    text-align: left; /* Alignement à gauche */
+    display: block; /* Afficher en bloc */
 }
 
-button[type="submit"],
-button[type="button"] {
-    width: 100%;
-    padding: 14px 16px;
-    border: none;
-    border-radius: 12px;
-    background-color: #4da6ff;
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+button[type="submit"], /* Styles pour boutons submit */
+button[type="button"] { /* et button */
+    width: 100%; /* Largeur pleine */
+    padding: 14px 16px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+    border-radius: 12px; /* Bordures arrondies */
+    background-color: #4da6ff; /* Fond bleu */
+    color: white; /* Texte blanc */
+    font-size: 1rem; /* Taille de police */
+    font-weight: 700; /* Gras */
+    cursor: pointer; /* Curseur pointeur */
+    transition: background-color 0.2s ease; /* Transition */
 }
 
-button[type="submit"]:hover,
-button[type="button"]:hover {
-    background-color: #3f8ce8;
+button[type="submit"]:hover, /* Styles au survol pour submit */
+button[type="button"]:hover { /* et button */
+    background-color: #3f8ce8; /* Fond plus foncé */
 }
 
-#message {
-    min-height: 22px;
-    color: #155724;
-    background: #e2f3e9;
-    border: 1px solid #b7dfc1;
-    border-radius: 12px;
-    padding: 10px 12px;
-    font-size: 0.95rem;
-    margin-bottom: 18px;
-    display: none;
-    text-align: left;
+#message { /* Styles pour le message */
+    min-height: 22px; /* Hauteur minimale */
+    color: #155724; /* Couleur du texte */
+    background: #e2f3e9; /* Fond vert clair */
+    border: 1px solid #b7dfc1; /* Bordure */
+    border-radius: 12px; /* Bordures arrondies */
+    padding: 10px 12px; /* Espacement interne */
+    font-size: 0.95rem; /* Taille de police */
+    margin-bottom: 18px; /* Marge inférieure */
+    display: none; /* Masquer par défaut */
+    text-align: left; /* Alignement à gauche */
 }
 
-#message.error {
-    color: #842029;
-    background: #f8d7da;
-    border-color: #f5c2c7;
+#message.error { /* Styles pour message d'erreur */
+    color: #842029; /* Couleur rouge */
+    background: #f8d7da; /* Fond rouge clair */
+    border-color: #f5c2c7; /* Bordure rouge */
 }
 
-.show-password {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    font-size: 0.95rem;
-    color: #4a5d7a;
+.show-password { /* Styles pour afficher mot de passe */
+    display: flex; /* Flexbox */
+    align-items: center; /* Centrer verticalement */
+    justify-content: flex-start; /* Alignement à gauche */
+    gap: 8px; /* Espacement */
+    font-size: 0.95rem; /* Taille de police */
+    color: #4a5d7a; /* Couleur du texte */
 }
 
-@media (max-width: 480px) {
-    .tout {
-        padding: 22px;
+@media (max-width: 480px) { /* Media query pour écrans petits */
+    .tout { /* Styles pour .tout en responsive */
+        padding: 22px; /* Espacement réduit */
     }
-    .logo h1 {
-        font-size: 1.75rem;
+    .logo h1 { /* Styles pour h1 du logo en responsive */
+        font-size: 1.75rem; /* Taille réduite */
     }
 }

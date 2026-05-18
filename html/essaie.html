@@ -1,0 +1,85 @@
+
+<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
+<html lang="fr"> <!-- Élément racine HTML avec langue française -->
+<head> <!-- Section d'en-tête du document -->
+    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+    <title>StockFlow - Accueil</title> <!-- Titre de la page -->
+    <link rel="stylesheet" href="../css/accueil.css"> <!-- Lien vers la feuille de style CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
+</head> <!-- Fin de la section head -->
+<body> <!-- Corps du document -->
+
+<!-- Barre latérale de navigation -->
+<div class="barreLaterale"> <!-- Conteneur de la barre latérale -->
+    <!-- Logo de l'application -->
+    <div class="logo"> <!-- Conteneur du logo -->
+        <img src="../Logo/logo.png" alt="Logo StockFlow"> <!-- Image du logo -->
+        <span>StockFlow</span> <!-- Texte du logo -->
+    </div> <!-- Fin du conteneur logo -->
+
+    <!-- Éléments du menu -->
+    <div class="elementMenu active"><i class="fas fa-home"></i> Accueil</div> <!-- Élément menu actif pour Accueil -->
+    <div class="elementMenu" onclick="window.location.href='caisse.html'"><i class="fas fa-cash-register"></i> Caisse</div> <!-- Élément menu pour Caisse -->
+    <div class="elementMenu" onclick="window.location.href='stock.html'"><i class="fas fa-boxes"></i> Stock</div> <!-- Élément menu pour Stock -->
+    <div class="elementMenu" onclick="window.location.href='magasin.html'"><i class="fas fa-store"></i> Magasin</div> <!-- Élément menu pour Magasin -->
+
+    <br><br> <!-- Sauts de ligne pour espacement -->
+    <!-- Bouton de déconnexion -->
+    <div class="elementMenu" onclick="localStorage.removeItem('boutique'); window.location.href='connexion.html'"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
+</div> <!-- Fin de la barre latérale -->
+
+<!-- Contenu principal de la page -->
+<div class="principal"> <!-- Conteneur principal -->
+
+    <!-- En-tête de la page -->
+    <div class="entete"> <!-- Conteneur de l'en-tête -->
+        <small>Bonjour <i class="fas fa-hand-paper"></i></small> <!-- Salutation avec icône -->
+        <h1 id="nomBoutique">Nom de la boutique</h1> <!-- Titre avec ID pour le nom de la boutique -->
+    </div> <!-- Fin de l'en-tête -->
+
+    <!-- Cartes de statistiques -->
+    <div class="cartes"> <!-- Conteneur des cartes -->
+
+        <!-- Carte pour le nombre de produits -->
+        <div class="carte"> <!-- Carte individuelle -->
+            <div class="titreCarte">PRODUITS</div> <!-- Titre de la carte -->
+            <div class="valeurCarte" id="produits">0</div> <!-- Valeur de la carte avec ID -->
+        </div> <!-- Fin de la carte -->
+
+        <!-- Carte pour les ventes du jour -->
+        <div class="carte"> <!-- Carte individuelle -->
+            <div class="titreCarte">VENTES AUJOURD'HUI</div> <!-- Titre de la carte -->
+            <div class="valeurCarte" id="ventes">0</div> <!-- Valeur de la carte avec ID -->
+        </div> <!-- Fin de la carte -->
+
+        <!-- Carte pour la recette du jour -->
+        <div class="carte"> <!-- Carte individuelle -->
+            <div class="titreCarte">RECETTE DU JOUR</div> <!-- Titre de la carte -->
+            <div class="valeurCarte" id="recette">0</div> <!-- Valeur de la carte avec ID -->
+        </div> <!-- Fin de la carte -->
+
+    </div> <!-- Fin des cartes -->
+
+    <!-- Sections d'informations -->
+    <div class="sections"> <!-- Conteneur des sections -->
+
+        <!-- Section pour les ruptures de stock -->
+        <div class="boite"> <!-- Boîte individuelle -->
+            <div class="titreBoite"><i class="fas fa-exclamation-triangle"></i> Ruptures de stock</div> <!-- Titre de la boîte avec icône -->
+            <div id="ruptures"></div> <!-- Conteneur pour les ruptures -->
+        </div> <!-- Fin de la boîte -->
+
+        <!-- Section pour les produits bientôt expirés -->
+        <div class="boite"> <!-- Boîte individuelle -->
+            <div class="titreBoite"><i class="fas fa-clock"></i> Bientôt expirés</div> <!-- Titre de la boîte avec icône -->
+            <div id="expires"></div> <!-- Conteneur pour les expirations -->
+        </div> <!-- Fin de la boîte -->
+
+    </div> <!-- Fin des sections -->
+
+</div> <!-- Fin du contenu principal -->
+
+<!-- Inclusion du script JavaScript -->
+<script src="../js/accueil.js"></script> <!-- Script JavaScript pour la page -->
+</body> <!-- Fin du corps -->
+</html> <!-- Fin du document HTML -->

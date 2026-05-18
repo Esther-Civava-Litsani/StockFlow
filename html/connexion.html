@@ -1,46 +1,47 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockFlow - Connexion</title>
-    <link rel="stylesheet" href="../css/connexion.css">
-</head>
-<body>
-    <div class="tout">
-        <div class="logo">
-            <img src="../Logo/logo.png" alt="logo StockFlow">
-            <h1>StockFlow</h1>
-        </div>
+<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
+<html lang="fr"> <!-- Élément racine HTML avec langue française -->
+<head> <!-- Section d'en-tête du document -->
+    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta pour la responsivité -->
+    <title>StockFlow - Connexion</title> <!-- Titre de la page -->
+    <link rel="stylesheet" href="../css/connexion.css"> <!-- Lien vers la feuille de style CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
+</head> <!-- Fin de la section head -->
+<body> <!-- Corps du document -->
+    <div class="tout"> <!-- Conteneur principal -->
+        <div class="logo"> <!-- Conteneur du logo -->
+            <img src="../Logo/logo.png" alt="logo StockFlow"> <!-- Image du logo -->
+            <h1>StockFlow</h1> <!-- Titre principal -->
+        </div> <!-- Fin du conteneur logo -->
 
-        <p>Gérez votre boutique, votre stock et votre caisse en toute simplicité.</p>
+        <p>Gérez votre boutique, votre stock et votre caisse en toute simplicité.</p> <!-- Description -->
 
-        <div class="emplacement">
-            <button type="button" class="bouton" data-tab="connexion" onclick="switchTab('connexion')">Connexion</button>
-            <button type="button" class="bouton active" data-tab="creation" onclick="switchTab('creation')">Créer ma boutique</button>
-        </div>
+        <div class="emplacement"> <!-- Conteneur pour les boutons d'onglets -->
+            <button type="button" class="bouton" data-tab="connexion" onclick="switchTab('connexion')">Connexion</button> <!-- Bouton pour Connexion -->
+            <button type="button" class="bouton active" data-tab="creation" onclick="switchTab('creation')">Créer ma boutique</button> <!-- Bouton actif pour Créer -->
+        </div> <!-- Fin du conteneur emplacement -->
 
-        <div id="message"></div>
+        <div id="message"></div> <!-- Conteneur pour les messages -->
 
-        <form id="connexion-form">
-            <input id="connexion-shop" type="text" placeholder="Nom de la boutique" required>
-            <input id="connexion-password" type="password" placeholder="Mot de passe" required>
-            <button type="submit">Se connecter</button>
-        </form>
+        <form id="connexion-form"> <!-- Formulaire de connexion -->
+            <input id="connexion-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
+            <input id="connexion-password" type="password" placeholder="Mot de passe" required> <!-- Champ mot de passe -->
+            <button type="submit">Se connecter</button> <!-- Bouton soumettre -->
+        </form> <!-- Fin du formulaire connexion -->
 
-        <form id="creation-form">
-            <input id="creation-shop" type="text" placeholder="Nom de la boutique" required>
-            <input id="creation-email" type="email" placeholder="Email" required>
-            <input id="creation-password" type="password" placeholder="Mot de passe" required>
-            <small>6 caractères minimum</small>
-            <div class="show-password">
-                <input id="show-password" type="checkbox">
-                <label for="show-password">Afficher le mot de passe</label>
-            </div>
-            <button type="submit">Créer ma boutique</button>
-        </form>
-    </div>
+        <form id="creation-form"> <!-- Formulaire de création -->
+            <input id="creation-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
+            <input id="creation-email" type="email" placeholder="Email" required> <!-- Champ email -->
+            <input id="creation-password" type="password" placeholder="Mot de passe" required> <!-- Champ mot de passe -->
+            <small>6 caractères minimum</small> <!-- Note pour le mot de passe -->
+            <div class="show-password"> <!-- Conteneur pour afficher mot de passe -->
+                <input id="show-password" type="checkbox"> <!-- Checkbox -->
+                <label for="show-password">Afficher le mot de passe</label> <!-- Label -->
+            </div> <!-- Fin du conteneur -->
+            <button type="submit">Créer ma boutique</button> <!-- Bouton soumettre -->
+        </form> <!-- Fin du formulaire création -->
+    </div> <!-- Fin du conteneur tout -->
 
-        <script src="../js/connexion.js"></script>
-</body>
-</html>
+    <script src="../js/connexion.js"></script> <!-- Script JavaScript pour la page -->
+</body> <!-- Fin du corps -->
+</html> <!-- Fin du document HTML -->
