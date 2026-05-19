@@ -2,6 +2,7 @@
 <html lang="fr"> <!-- Élément racine HTML avec langue française -->
 <head> <!-- Section d'en-tête du document -->
     <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive -->
     <title>StockFlow - Caisse</title> <!-- Titre de la page -->
     <link rel="stylesheet" href="../css/caisse.css"> <!-- Lien vers la feuille de style CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
@@ -37,22 +38,43 @@
         <!-- Partie gauche -->
         <div class="gauche"> <!-- Section gauche -->
 
-            <!-- Ajout de produit -->
-            <div class="carte"> <!-- Carte pour ajouter un produit -->
-                <h3>Ajouter un produit</h3> <!-- Titre de la carte -->
+            <!-- Zone scanner / code produit -->
+            <div class="carte"> <!-- Carte pour le scanner et les informations produit -->
+                <h3>Zone scanner / code produit</h3> <!-- Titre du bloc -->
+                <div class="ligne-champ"> <!-- Ligne de saisie -->
+                    <input type="text" id="code" placeholder="Entrer ou scanner le code produit"> <!-- Champ code produit -->
+                    <button id="rechercher-btn">Rechercher</button> <!-- Bouton rechercher produit -->
+                </div> <!-- Fin de la ligne de saisie -->
 
-                <input type="text" id="code" placeholder="Scanner ou saisir code"> <!-- Champ de saisie pour le code -->
-                <button id="ajouter-btn">Ajouter</button> <!-- Bouton pour ajouter -->
+                <div class="infos-produit"> <!-- Bloc d'informations produit -->
+                    <div class="info-ligne"><span>Nom produit</span><span id="info-nom">—</span></div> <!-- Nom du produit -->
+                    <div class="info-ligne"><span>Prix unitaire</span><span id="info-prix">—</span></div> <!-- Prix unitaire -->
+                    <div class="info-ligne"><span>Quantité disponible</span><span id="info-stock">—</span></div> <!-- Stock disponible -->
+                    <div class="info-ligne"><span>Quantité à acheter</span><input type="number" id="quantite" value="1" min="1"></div> <!-- Quantité à acheter -->
+                </div> <!-- Fin du bloc d'informations produit -->
 
-                <br><br> <!-- Sauts de ligne -->
-
-                <input type="number" id="quantite" value="1" min="1"> <!-- Champ pour la quantité -->
+                <div class="ligne-champ"> <!-- Ligne de boutons -->
+                    <button id="ajouter-panier-btn">Ajouter</button> <!-- Bouton ajouter au panier -->
+                    <button id="annuler-produit-btn" class="secondaire">Annuler</button> <!-- Bouton annuler sélection -->
+                </div> <!-- Fin de la ligne de boutons -->
             </div> <!-- Fin de la carte -->
 
-            <!-- Panier -->
-            <div class="carte"> <!-- Carte pour le panier -->
-                <h3>Panier</h3> <!-- Titre de la carte -->
-                <div id="panier"></div> <!-- Conteneur pour le panier -->
+            <!-- Facture / Panier -->
+            <div class="carte"> <!-- Carte pour le panier et la facture -->
+                <h3>Facture / Panier</h3> <!-- Titre du panier -->
+                <table class="panier-table"> <!-- Tableau du panier -->
+                    <thead> <!-- En-tête du tableau -->
+                        <tr> <!-- Ligne de colonnes -->
+                            <th>Produit</th> <!-- Colonne produit -->
+                            <th>Quantité</th> <!-- Colonne quantité -->
+                            <th>Prix unitaire</th> <!-- Colonne prix unitaire -->
+                            <th>Total ligne</th> <!-- Colonne total ligne -->
+                            <th>Modifier</th> <!-- Colonne modifier -->
+                            <th>Supprimer</th> <!-- Colonne supprimer -->
+                        </tr> <!-- Fin de la ligne -->
+                    </thead> <!-- Fin de l'en-tête -->
+                    <tbody id="panier-body"></tbody> <!-- Corps du tableau -->
+                </table> <!-- Fin du tableau -->
             </div> <!-- Fin de la carte -->
 
         </div> <!-- Fin de la partie gauche -->
@@ -60,17 +82,28 @@
         <!-- Partie droite -->
         <div class="droite"> <!-- Section droite -->
 
-            <!-- Total -->
-            <div class="carte"> <!-- Carte pour le total -->
-                <h3>Total du jour</h3> <!-- Titre de la carte -->
-                <h2 id="total">0€</h2> <!-- Affichage du total -->
-                <button id="fin-journee-btn">Fin de journée</button> <!-- Bouton pour fin de journée -->
+            <!-- Résumé paiement -->
+            <div class="carte"> <!-- Carte pour le résumé de paiement -->
+                <h3>Résumé paiement</h3> <!-- Titre du résumé -->
+                <div class="resume-item"><span>Nombre produits</span><span id="resume-count">0</span></div> <!-- Nombre de produits -->
+                <div class="resume-item"><span>Montant total</span><span id="resume-total">0 FC</span></div> <!-- Montant total -->
+                <div class="resume-item"><span>Argent reçu</span><input type="number" id="montant-recu" value="0" min="0"></div> <!-- Argent reçu -->
+                <div class="resume-item"><span>Monnaie à rendre</span><span id="rendu">0 FC</span></div> <!-- Monnaie à rendre -->
+                <div class="message" id="message-paiement">&nbsp;</div> <!-- Message de paiement -->
+            </div> <!-- Fin de la carte -->
+
+            <!-- Boutons -->
+            <div class="carte actions"> <!-- Carte pour les actions -->
+                <h3>Actions</h3> <!-- Titre des actions -->
+                <button id="valider-btn">Valider vente</button> <!-- Bouton valider vente -->
+                <button id="annuler-btn" class="secondaire">Annuler</button> <!-- Bouton annuler vente -->
+                <button id="imprimer-btn" class="secondaire"><i class="fas fa-print"></i> Imprimer facture</button> <!-- Bouton imprimer facture -->
             </div> <!-- Fin de la carte -->
 
             <!-- Historique -->
             <div class="carte"> <!-- Carte pour l'historique -->
-                <h3>Historique</h3> <!-- Titre de la carte -->
-                <div id="historique"></div> <!-- Conteneur pour l'historique -->
+                <h3>Historique</h3> <!-- Titre de l'historique -->
+                <div id="historique"></div> <!-- Conteneur de l'historique -->
             </div> <!-- Fin de la carte -->
 
         </div> <!-- Fin de la partie droite -->

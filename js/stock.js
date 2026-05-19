@@ -14,6 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let produits = compte.produits || [];
 
+    function genererCode(index) {
+        return `P${String(index + 1).padStart(3, '0')}`;
+    }
+
+    function initialiserCodes() {
+        produits.forEach((produit, index) => {
+            if (!produit.code) {
+                produit.code = genererCode(index);
+            }
+        });
+        compte.produits = produits;
+        saveCurrentAccount(compte);
+    }
+
     function formaterPrix(valeur) {
         if (Number.isNaN(valeur)) return '0,00';
         return valeur.toFixed(2).replace('.', ',');
@@ -24,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         produits.forEach((produit, index) => {
             const ligne = document.createElement('tr');
             ligne.innerHTML = `
-                <td>P${index + 1}</td>
+                <td>${produit.code || genererCode(index)}</td>
                 <td>${produit.nom}</td>
                 <td>${formaterPrix(produit.achat)}€</td>
                 <td>${formaterPrix(produit.vente)}€</td>
@@ -53,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const produit = {
+            code: genererCode(produits.length),
             nom,
             achat,
             vente,
@@ -71,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         champExpiration.value = '';
     }
 
+    initialiserCodes();
     afficherProduits();
     boutonAjouter.addEventListener('click', ajouterProduit);
     [champNom, champAchat, champVente, champQuantite, champExpiration].forEach(champ => {

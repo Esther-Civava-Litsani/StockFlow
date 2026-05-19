@@ -4,26 +4,27 @@
 
 body { /* Styles pour le corps de la page */
     margin: 0; /* Supprimer les marges par défaut */
-    font-family: "Segoe UI", Arial; /* Police de caractères */
+    font-family: "Segoe UI", Arial, sans-serif; /* Police de caractères */
     background: #f5f7fb; /* Couleur de fond */
     display: flex; /* Utiliser flexbox pour la mise en page */
     min-height: 100vh; /* Hauteur minimale de la fenêtre */
+    color: #172a4d; /* Couleur du texte */
 }
 
 .barreLaterale { /* Styles pour la barre latérale */
     width: 240px; /* Largeur fixe */
     background: #ffffff; /* Fond blanc */
-    height: 100vh; /* Hauteur pleine fenêtre */
+    min-height: 100vh; /* Hauteur min de la fenêtre */
     padding: 24px 20px; /* Espacement interne */
     border-right: 1px solid #eceff4; /* Bordure droite */
 }
 
-.barreLaterale .logo { /* Styles pour le logo dans la barre latérale */
+.barreLaterale .logo { /* Styles pour le logo dans la barre */
     display: flex; /* Flexbox pour aligner */
     align-items: center; /* Centrer verticalement */
     gap: 10px; /* Espacement entre éléments */
     margin-bottom: 30px; /* Marge inférieure */
-    font-weight: 700; /* Gras */
+    font-weight: 700; /* Texte en gras */
     color: #1d3f7f; /* Couleur du texte */
     font-size: 1.05rem; /* Taille de police */
 }
@@ -32,23 +33,26 @@ body { /* Styles pour le corps de la page */
     width: 34px; /* Largeur */
     height: 34px; /* Hauteur */
     object-fit: contain; /* Ajuster l'image */
+    border-radius: 10px; /* Coins arrondis */
 }
 
 .elementMenu { /* Styles pour les éléments du menu */
-    display: block;
-    width: 100%;
+    display: block; /* Afficher en bloc */
+    width: 100%; /* Largeur pleine */
     padding: 12px 14px; /* Espacement interne */
-    border-radius: 12px; /* Bordures arrondies */
+    border-radius: 12px; /* Coins arrondis */
     margin-bottom: 10px; /* Marge inférieure */
     cursor: pointer; /* Curseur pointeur */
     color: #5a6375; /* Couleur du texte */
-    transition: background-color 0.2s ease, color 0.2s ease; /* Transitions */
+    text-decoration: none; /* Supprimer le soulignement */
+    font-weight: 600; /* Texte plus visible */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transition douce */
 }
 
-.elementMenu:hover, /* Styles au survol */
+.elementMenu:hover,
 .elementMenu.active { /* Styles pour l'élément actif */
-    background-color: #e8f0ff; /* Fond au survol/actif */
-    color: #2d6cdf; /* Couleur du texte */
+    background-color: #e8f0ff; /* Fond bleu clair */
+    color: #2d6cdf; /* Texte bleu */
 }
 
 .principal { /* Styles pour le contenu principal */
@@ -56,51 +60,139 @@ body { /* Styles pour le corps de la page */
     padding: 28px 32px; /* Espacement interne */
 }
 
-.conteneur { /* Styles pour le conteneur principal */
+.conteneur { /* Conteneur principal pour la mise en page */
     display: flex; /* Flexbox */
-    gap: 20px; /* Espacement entre enfants */
+    gap: 20px; /* Espacement entre colonnes */
+    align-items: flex-start; /* Aligner en haut */
 }
 
-.gauche { /* Styles pour la section gauche */
-    flex: 2; /* Flex-grow */
+.gauche { /* Section gauche */
+    flex: 2; /* Plus large */
 }
 
-.droite { /* Styles pour la section droite */
-    flex: 1; /* Flex-grow */
+.droite { /* Section droite */
+    flex: 1; /* Moins large */
 }
 
 .carte { /* Styles pour les cartes */
     background: #ffffff; /* Fond blanc */
     padding: 22px; /* Espacement interne */
-    border-radius: 16px; /* Bordures arrondies */
-    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08); /* Ombre */
+    border-radius: 16px; /* Coins arrondis */
+    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08); /* Ombre douce */
     margin-bottom: 20px; /* Marge inférieure */
 }
 
-.carte h3 { /* Styles pour les titres h3 dans les cartes */
+.carte h3 { /* Styles pour les titres des cartes */
     margin-top: 0; /* Supprimer marge supérieure */
-    color: #172a4d; /* Couleur du texte */
+    color: #172a4d; /* Couleur du titre */
 }
 
-input { /* Styles pour les champs input */
-    width: 70%; /* Largeur */
-    padding: 12px; /* Espacement interne */
-    border-radius: 12px; /* Bordures arrondies */
+.ligne-champ { /* Ligne de champs et de boutons */
+    display: flex; /* Flex horizontal */
+    flex-wrap: wrap; /* Passage à la ligne si besoin */
+    gap: 10px; /* Espacement */
+    margin-bottom: 18px; /* Marge inférieure */
+}
+
+.ligne-champ input { /* Styles pour les champs de ligne */
+    flex: 1; /* Prendre l'espace restant */
+    min-width: 180px; /* Largeur minimale */
+}
+
+.infos-produit { /* Bloc d'informations produit */
+    background: #f8fbff; /* Fond clair */
+    border: 1px solid #e4ecfa; /* Bordure légère */
+    border-radius: 14px; /* Coins arrondis */
+    padding: 18px; /* Espacement interne */
+    margin-bottom: 18px; /* Marge inférieure */
+}
+
+.info-ligne { /* Ligne d'information produit */
+    display: flex; /* Flex */
+    justify-content: space-between; /* Espacement entre label et valeur */
+    align-items: center; /* Centrer verticalement */
+    padding: 8px 0; /* Espacement vertical */
+    border-bottom: 1px solid #edf2f8; /* Séparateur */
+}
+
+.info-ligne:last-child { /* Dernière ligne d'information */
+    border-bottom: none; /* Sans séparateur */
+}
+
+.panier-table { /* Tableau du panier */
+    width: 100%; /* Largeur totale */
+    border-collapse: collapse; /* Fusion des bordures */
+}
+
+.panier-table th,
+.panier-table td { /* Styles pour les cellules du tableau */
+    padding: 12px 10px; /* Espacement interne */
+    text-align: left; /* Alignement du texte */
+    border-bottom: 1px solid #eef1f7; /* Bordure de séparation */
+}
+
+.panier-table th { /* Entêtes du panier */
+    background: #f7f9ff; /* Fond clair */
+    color: #5a6375; /* Couleur du texte */
+    font-weight: 700; /* Gras */
+}
+
+.panier-table button { /* Boutons dans le tableau */
+    padding: 6px 10px; /* Espacement interne */
+    border-radius: 10px; /* Coins arrondis */
+    border: 1px solid transparent; /* Bordure par défaut */
+    cursor: pointer; /* Curseur pointeur */
+    font-size: 0.95rem; /* Taille de police */
+}
+
+.panier-table .modifier-btn { /* Bouton modifier */
+    background: #f5f7ff; /* Fond clair */
+    color: #2d6cdf; /* Texte bleu */
+    border-color: #d4e1fb; /* Bordure claire */
+}
+
+.panier-table .supprimer-btn { /* Bouton supprimer */
+    background: #ffe7e9; /* Fond rouge clair */
+    color: #b91c1c; /* Texte rouge */
+    border-color: #f5c2c7; /* Bordure rouge clair */
+}
+
+.resume-item { /* Ligne du résumé de paiement */
+    display: flex; /* Flex horizontal */
+    justify-content: space-between; /* Espacement */
+    align-items: center; /* Centrer verticalement */
+    padding: 12px 0; /* Espacement vertical */
+    border-bottom: 1px solid #eef1f7; /* Bordure de séparation */
+}
+
+.resume-item:last-child { /* Dernière ligne du résumé */
+    border-bottom: none; /* Sans bordure */
+}
+
+.resume-item input { /* Champs du résumé */
+    width: 130px; /* Largeur fixe */
+    padding: 10px; /* Espacement interne */
     border: 1px solid #d4dbea; /* Bordure */
-    font-size: 1rem; /* Taille de police */
-    margin-right: 10px; /* Marge droite */
+    border-radius: 10px; /* Coins arrondis */
 }
 
-input:focus { /* Styles au focus pour input */
-    outline: none; /* Supprimer outline par défaut */
-    border-color: #7b9cff; /* Couleur de bordure */
-    box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12); /* Ombre de focus */
+.message { /* Message de paiement */
+    margin-top: 12px; /* Marge supérieure */
+    font-size: 0.95rem; /* Taille de police */
+    color: #d14343; /* Couleur rouge pour erreur */
+    min-height: 22px; /* Hauteur minimale */
 }
 
-button { /* Styles pour les boutons */
+.actions { /* Bloc des actions */
+    display: flex; /* Flex vertical */
+    flex-direction: column; /* Colonne */
+    gap: 10px; /* Espacement */
+}
+
+button { /* Styles généraux des boutons */
     padding: 12px 16px; /* Espacement interne */
     border: none; /* Pas de bordure */
-    border-radius: 12px; /* Bordures arrondies */
+    border-radius: 12px; /* Coins arrondis */
     background: #4da6ff; /* Fond bleu */
     color: white; /* Texte blanc */
     cursor: pointer; /* Curseur pointeur */
@@ -108,39 +200,60 @@ button { /* Styles pour les boutons */
     transition: background-color 0.2s ease; /* Transition */
 }
 
-button:hover { /* Styles au survol pour bouton */
+button:hover { /* Hover bouton */
     background: #3f8ce8; /* Fond plus foncé */
 }
 
-.elementPanier { /* Styles pour les éléments du panier */
-    display: flex; /* Flexbox */
-    justify-content: space-between; /* Espacement entre éléments */
-    padding: 12px 0; /* Espacement interne */
-    border-bottom: 1px solid #eef1f7; /* Bordure inférieure */
-    color: #4c5975; /* Couleur du texte */
+button.secondaire { /* Boutons secondaires */
+    background: #f5f7ff; /* Fond clair */
+    color: #2d6cdf; /* Texte bleu */
+    border: 1px solid #d4e1fb; /* Bordure claire */
 }
 
-.elementPanier:last-child { /* Styles pour le dernier élément du panier */
-    border-bottom: none; /* Pas de bordure */
+button.secondaire:hover { /* Hover boutons secondaires */
+    background: #e9efff; /* Fond plus clair */
+}
+
+.historique-item { /* Entrée d'historique */
+    background: #f8fbff; /* Fond clair */
+    border-radius: 14px; /* Coins arrondis */
+    padding: 12px 14px; /* Espacement interne */
+    margin-bottom: 10px; /* Marge inférieure */
+    color: #344359; /* Couleur du texte */
+}
+
+@media (max-width: 960px) { /* Media query pour écrans moyens */
+    .conteneur { /* Conteneur responsive */
+        flex-direction: column; /* Colonne */
+    }
+
+    .droite { /* Droite responsive */
+        width: 100%; /* Largeur pleine */
+    }
 }
 
 @media (max-width: 760px) { /* Media query pour écrans petits */
-    body { /* Styles pour body en responsive */
-        flex-direction: column; /* Direction verticale */
+    body { /* Body responsive */
+        flex-direction: column; /* Colonne */
     }
 
-    .barreLaterale { /* Styles pour barre latérale en responsive */
+    .barreLaterale { /* Barre responsive */
         width: 100%; /* Largeur pleine */
-        height: auto; /* Hauteur automatique */
+        min-height: auto; /* Hauteur auto */
         border-right: none; /* Pas de bordure droite */
         border-bottom: 1px solid #eceff4; /* Bordure inférieure */
     }
 
-    .principal { /* Styles pour principal en responsive */
+    .principal { /* Principal responsive */
         padding: 22px; /* Espacement réduit */
     }
 
-    .conteneur { /* Styles pour conteneur en responsive */
-        flex-direction: column; /* Direction verticale */
+    .ligne-champ { /* Champs responsive */
+        flex-direction: column; /* Colonne */
+    }
+
+    .resume-item { /* Résumé responsive */
+        flex-direction: column; /* Colonne */
+        align-items: flex-start; /* Alignement gauche */
     }
 }
