@@ -101,21 +101,6 @@ function basculerMotDePasse(evenement) {
     });
 }
 
-function afficherFormulaireRecuperation(evenement) {
-    evenement.preventDefault();
-    document.getElementById('connexion-form').style.display = 'none';
-    document.getElementById('recuperation-form').style.display = 'flex';
-    effacerMessage();
-}
-
-function retournerAConnexion(evenement) {
-    evenement.preventDefault();
-    document.getElementById('connexion-form').style.display = 'flex';
-    document.getElementById('recuperation-form').style.display = 'none';
-    document.getElementById('recuperation-form').reset();
-    effacerMessage();
-}
-
 function recupererMotDePasse(evenement) {
     evenement.preventDefault();
     effacerMessage();
@@ -145,8 +130,9 @@ function recupererMotDePasse(evenement) {
     }
 
     afficherMessage(`Votre mot de passe est: ${compte.motDePasse}. Veuillez le copier pour vous connecter.`, false);
+    document.getElementById('recuperation-form').reset();
     setTimeout(() => {
-        retournerAConnexion({preventDefault: () => {}});
+        changerOnglet('connexion');
     }, 3000);
 }
 

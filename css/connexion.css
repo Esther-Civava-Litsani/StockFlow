@@ -118,7 +118,6 @@ a.back-link:hover { /* Survol du lien retour */
 .forgot-password-link { /* Styles spécifiques pour lien mot de passe oublié */
     margin-top: 8px; /* Marge supérieure */
 }
-}
 
 small { /* Styles pour les éléments small */
     color: #576d8b; /* Couleur du texte */
