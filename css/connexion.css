@@ -100,6 +100,26 @@ input:focus { /* Styles au focus pour input */
     box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12); /* Ombre de focus */
 }
 
+a.forgot-password-link, /* Styles pour le lien mot de passe oublié */
+a.back-link { /* Styles pour le lien retour */
+    font-size: 0.85rem; /* Taille de police réduite */
+    color: #4da6ff; /* Couleur du lien */
+    text-decoration: none; /* Pas de soulignement */
+    cursor: pointer; /* Curseur pointeur */
+    transition: color 0.2s ease; /* Transition */
+}
+
+a.forgot-password-link:hover, /* Survol du lien mot de passe oublié */
+a.back-link:hover { /* Survol du lien retour */
+    color: #1a4fe7; /* Couleur au survol */
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.forgot-password-link { /* Styles spécifiques pour lien mot de passe oublié */
+    margin-top: 8px; /* Marge supérieure */
+}
+}
+
 small { /* Styles pour les éléments small */
     color: #576d8b; /* Couleur du texte */
     text-align: left; /* Alignement à gauche */

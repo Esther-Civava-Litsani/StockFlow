@@ -91,8 +91,10 @@
                 <td>${item.quantite}</td>
                 <td>${formaterPrix(item.prix)}</td>
                 <td>${formaterPrix(item.prix * item.quantite)}</td>
-                <td><button class="modifier-btn" data-index="${index}">✏️</button></td>
-                <td><button class="supprimer-btn" data-index="${index}">🗑️</button></td>
+                <td class="action-cell">
+                    <button class="modifier-btn" data-index="${index}" title="Modifier">✏️</button>
+                    <button class="supprimer-btn" data-index="${index}" title="Supprimer">🗑️</button>
+                </td>
             `; /* Contenu de la ligne */
             panierBody.appendChild(ligne); /* Ajouter la ligne */
         });

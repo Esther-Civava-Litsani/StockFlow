@@ -1,119 +1,99 @@
-<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
-<html lang="fr"> <!-- Élément racine HTML avec langue française -->
-<head> <!-- Section d'en-tête du document -->
-    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive -->
-    <title>StockFlow - Caisse</title> <!-- Titre de la page -->
-    <link rel="stylesheet" href="../css/caisse.css"> <!-- Lien vers la feuille de style CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
-</head> <!-- Fin de la section head -->
-<body> <!-- Corps du document -->
-
-<!-- Barre latérale de navigation -->
-<div class="barreLaterale"> <!-- Conteneur de la barre latérale -->
-    <!-- Logo de l'application -->
-    <div class="logo"> <!-- Conteneur du logo -->
-        <img src="../Logo/logo.png" alt="Logo StockFlow"> <!-- Image du logo -->
-        <span>StockFlow</span> <!-- Texte du logo -->
-    </div> <!-- Fin du conteneur logo -->
-
-    <!-- Éléments du menu -->
-    <a href="accueil.html" class="elementMenu"><i class="fas fa-home"></i> Accueil</a> <!-- Élément menu pour Accueil -->
-    <a href="caisse.html" class="elementMenu active"><i class="fas fa-cash-register"></i> Caisse</a> <!-- Élément menu actif pour Caisse -->
-    <a href="stock.html" class="elementMenu"><i class="fas fa-boxes"></i> Stock</a> <!-- Élément menu pour Stock -->
-    <a href="magasin.html" class="elementMenu"><i class="fas fa-store"></i> Magasin</a> <!-- Élément menu pour Magasin -->
-
-    <br><br> <!-- Sauts de ligne pour espacement -->
-    <!-- Bouton de déconnexion -->
-    <div class="elementMenu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
-</div> <!-- Fin de la barre latérale -->
-
-<!-- Contenu principal de la page -->
-<div class="principal"> <!-- Conteneur principal -->
-
-    <h2>Caisse</h2> <!-- Titre de la page -->
-
-    <div class="conteneur"> <!-- Conteneur principal pour la mise en page -->
-
-        <!-- Partie gauche -->
-        <div class="gauche"> <!-- Section gauche -->
-
-            <!-- Zone scanner / code produit -->
-            <div class="carte"> <!-- Carte pour le scanner et les informations produit -->
-                <h3>Zone scanner / code produit</h3> <!-- Titre du bloc -->
-                <div class="ligne-champ"> <!-- Ligne de saisie -->
-                    <input type="text" id="code" placeholder="Entrer ou scanner le code produit"> <!-- Champ code produit -->
-                    <button id="rechercher-btn">Rechercher</button> <!-- Bouton rechercher produit -->
-                </div> <!-- Fin de la ligne de saisie -->
-
-                <div class="infos-produit"> <!-- Bloc d'informations produit -->
-                    <div class="info-ligne"><span>Nom produit</span><span id="info-nom">—</span></div> <!-- Nom du produit -->
-                    <div class="info-ligne"><span>Prix unitaire</span><span id="info-prix">—</span></div> <!-- Prix unitaire -->
-                    <div class="info-ligne"><span>Quantité disponible</span><span id="info-stock">—</span></div> <!-- Stock disponible -->
-                    <div class="info-ligne"><span>Quantité à acheter</span><input type="number" id="quantite" value="1" min="1"></div> <!-- Quantité à acheter -->
-                </div> <!-- Fin du bloc d'informations produit -->
-
-                <div class="ligne-champ"> <!-- Ligne de boutons -->
-                    <button id="ajouter-panier-btn">Ajouter</button> <!-- Bouton ajouter au panier -->
-                    <button id="annuler-produit-btn" class="secondaire">Annuler</button> <!-- Bouton annuler sélection -->
-                </div> <!-- Fin de la ligne de boutons -->
-            </div> <!-- Fin de la carte -->
-
-            <!-- Facture / Panier -->
-            <div class="carte"> <!-- Carte pour le panier et la facture -->
-                <h3>Facture / Panier</h3> <!-- Titre du panier -->
-                <table class="panier-table"> <!-- Tableau du panier -->
-                    <thead> <!-- En-tête du tableau -->
-                        <tr> <!-- Ligne de colonnes -->
-                            <th>Produit</th> <!-- Colonne produit -->
-                            <th>Quantité</th> <!-- Colonne quantité -->
-                            <th>Prix unitaire</th> <!-- Colonne prix unitaire -->
-                            <th>Total ligne</th> <!-- Colonne total ligne -->
-                            <th>Modifier</th> <!-- Colonne modifier -->
-                            <th>Supprimer</th> <!-- Colonne supprimer -->
-                        </tr> <!-- Fin de la ligne -->
-                    </thead> <!-- Fin de l'en-tête -->
-                    <tbody id="panier-body"></tbody> <!-- Corps du tableau -->
-                </table> <!-- Fin du tableau -->
-            </div> <!-- Fin de la carte -->
-
-        </div> <!-- Fin de la partie gauche -->
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockFlow - Caisse</title>
+    <link rel="stylesheet" href="../css/caisse.css">
+    <!-- Lien vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+    <!-- Barre latérale de navigation -->
+    <div class="barre"> 
+        <!-- Logo -->
+        <div class="logo">
+            <img src="../Logo/logo.png" alt="Logo StockFlow">
+            <span>StockFlow</span> 
+        </div>
+        <!-- Éléments du menu -->
+        <a href="accueil.html" class="Menu "><i class="fas fa-home"></i> Accueil</a>
+        <a href="caisse.html" class="Menu active"><i class="fas fa-cash-register"></i> Caisse</a>
+        <a href="stock.html" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
+        <a href="magasin.html" class="Menu"><i class="fas fa-store"></i> Magasin</a>
+        <br><br>
+        <!-- Bouton de déconnexion -->
+        <a href="deconnexion.html" class="Menu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+    </div>
+    <!-- Contenu principal de la page -->
+    <div class="principal">
+        <small>Caisse <i class="fas fa-cash-register"></i></small>
+        <div class="cartes">
+            <!-- Partie gauche -->
+            <div class="gauche">
+                <!-- Zone Code produit -->
+                <div class="codes">
+                    <h2>Code produit</h2>
+                    <div class="code">
+                        <input type="text" id="code" placeholder="Entrer le code du produit">
+                        <button id="rechercher-btn">Rechercher</button>
+                    </div>
+                    <!-- Bloc d'informations produit -->
+                    <div class="infos-produit"> 
+                        <div class="info"><span>Nom produit</span><span id="info-nom"></span></div>
+                        <div class="info"><span>Prix unitaire</span><span id="info-prix"></span></div>
+                        <div class="info"><span>Quantité disponible</span><span id="info-stock"></span></div>
+                        <div class="info"><span>Quantité à acheter</span><input type="number" id="quantite" value="1" min="1"></div>
+                    </div>
+                    <!-- Ligne de boutons -->
+                    <div class="ligne-champ"> 
+                        <button id="ajouter-panier-btn">Ajouter</button>
+                        <button id="annuler-produit-btn">Annuler</button>
+                    </div>
+                </div>
+            <!-- Panier -->
+            <div class="panier">
+                <h2>Panier</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Quantité</th> 
+                            <th>Prix unitaire</th> 
+                            <th>Total ligne</th>
+                            <th>Action</th>
+                        </tr> 
+                    </thead> 
+                    <tbody id="panier-body"></tbody>
+                </table>
+            </div>
+        </div>
         <!-- Partie droite -->
-        <div class="droite"> <!-- Section droite -->
-
+        <div class="droite">
             <!-- Résumé paiement -->
-            <div class="carte"> <!-- Carte pour le résumé de paiement -->
-                <h3>Résumé paiement</h3> <!-- Titre du résumé -->
-                <div class="resume-item"><span>Nombre produits</span><span id="resume-count">0</span></div> <!-- Nombre de produits -->
-                <div class="resume-item"><span>Montant total</span><span id="resume-total">0 FC</span></div> <!-- Montant total -->
-                <div class="resume-item"><span>Argent reçu</span><input type="number" id="montant-recu" value="0" min="0"></div> <!-- Argent reçu -->
-                <div class="resume-item"><span>Monnaie à rendre</span><span id="rendu">0 FC</span></div> <!-- Monnaie à rendre -->
-                <div class="message" id="message-paiement">&nbsp;</div> <!-- Message de paiement -->
-            </div> <!-- Fin de la carte -->
-
+            <div class="carte">
+                <h2>Résumé paiement</h2>
+                <div class="resume"><span>Nombre produits</span><span id="resume-count">0</span></div>
+                <div class="resume"><span>Montant total</span><span id="resume-total">0</span></div>
+                <div class="resume"><span>Argent reçu</span><input type="number" id="montant-recu" value="0" min="0"></div>
+                <div class="resume"><span>Monnaie à rendre</span><span id="rendu">0</span></div>
+                <div class="message" id="message-paiement">&nbsp;</div>
+            </div>
             <!-- Boutons -->
-            <div class="carte actions"> <!-- Carte pour les actions -->
-                <h3>Actions</h3> <!-- Titre des actions -->
-                <button id="valider-btn">Valider vente</button> <!-- Bouton valider vente -->
-                <button id="annuler-btn" class="secondaire">Annuler</button> <!-- Bouton annuler vente -->
-                <button id="imprimer-btn" class="secondaire"><i class="fas fa-print"></i> Imprimer facture</button> <!-- Bouton imprimer facture -->
-            </div> <!-- Fin de la carte -->
-
+            <div class="actions">
+                <h2>Actions</h2>
+                <button id="valider-btn">Valider vente</button>
+                <button id="annuler-btn" class="secondaire">Annuler</button>
+                <button id="imprimer-btn" class="secondaire"><i class="fas fa-print"></i> Imprimer facture</button>
+            </div>
             <!-- Historique -->
-            <div class="carte"> <!-- Carte pour l'historique -->
-                <h3>Historique</h3> <!-- Titre de l'historique -->
-                <div id="historique"></div> <!-- Conteneur de l'historique -->
-            </div> <!-- Fin de la carte -->
-
-        </div> <!-- Fin de la partie droite -->
-
-    </div> <!-- Fin du conteneur -->
-
-</div> <!-- Fin du contenu principal -->
-
-<!-- Inclusion du script JavaScript -->
-<script src="../js/common.js"></script> <!-- Script partagé pour la connexion et la déconnexion -->
-<script src="../js/caisse.js"></script> <!-- Script JavaScript pour la page -->
-</body> <!-- Fin du corps -->
-</html> <!-- Fin du document HTML -->
+            <div class="historique">
+                <h2>Historique</h2>
+                <div id="historique"></div>
+            </div> 
+        </div>
+    </div>
+    <script src="../js/common.js"></script>
+    <script src="../js/caisse.js"></script>
+</body>
+</html>

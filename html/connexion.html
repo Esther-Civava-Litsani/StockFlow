@@ -27,7 +27,15 @@
             <input id="connexion-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
             <input id="connexion-password" type="password" placeholder="Mot de passe" required> <!-- Champ mot de passe -->
             <button type="submit">Se connecter</button> <!-- Bouton soumettre -->
+            <a href="#" class="forgot-password-link" onclick="afficherFormulaireRecuperation(event)">Mot de passe oublié ?</a> <!-- Lien pour récupérer mot de passe -->
         </form> <!-- Fin du formulaire connexion -->
+
+        <form id="recuperation-form"> <!-- Formulaire de récupération -->
+            <input id="recuperation-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
+            <input id="recuperation-email" type="email" placeholder="Email" required> <!-- Champ email -->
+            <button type="submit">Récupérer mon mot de passe</button> <!-- Bouton soumettre -->
+            <a href="#" class="back-link" onclick="retournerAConnexion(event)">Retour à la connexion</a> <!-- Lien retour -->
+        </form> <!-- Fin du formulaire récupération -->
 
         <form id="creation-form"> <!-- Formulaire de création -->
             <input id="creation-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->

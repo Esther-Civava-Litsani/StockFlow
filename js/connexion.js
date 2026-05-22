@@ -101,7 +101,57 @@ function basculerMotDePasse(evenement) {
     });
 }
 
+function afficherFormulaireRecuperation(evenement) {
+    evenement.preventDefault();
+    document.getElementById('connexion-form').style.display = 'none';
+    document.getElementById('recuperation-form').style.display = 'flex';
+    effacerMessage();
+}
+
+function retournerAConnexion(evenement) {
+    evenement.preventDefault();
+    document.getElementById('connexion-form').style.display = 'flex';
+    document.getElementById('recuperation-form').style.display = 'none';
+    document.getElementById('recuperation-form').reset();
+    effacerMessage();
+}
+
+function recupererMotDePasse(evenement) {
+    evenement.preventDefault();
+    effacerMessage();
+
+    const nomBoutique = document.getElementById('recuperation-shop').value.trim();
+    const email = document.getElementById('recuperation-email').value.trim();
+
+    if (!nomBoutique) {
+        afficherMessage('Veuillez saisir le nom de votre boutique.', true);
+        return;
+    }
+
+    if (!email.includes('@')) {
+        afficherMessage('Veuillez saisir une adresse e-mail valide.', true);
+        return;
+    }
+
+    const compte = recupererCompteStocke(nomBoutique);
+    if (!compte) {
+        afficherMessage('Boutique introuvable. Vérifiez le nom.', true);
+        return;
+    }
+
+    if (compte.email !== email) {
+        afficherMessage('L\'email ne correspond pas à cette boutique.', true);
+        return;
+    }
+
+    afficherMessage(`Votre mot de passe est: ${compte.motDePasse}. Veuillez le copier pour vous connecter.`, false);
+    setTimeout(() => {
+        retournerAConnexion({preventDefault: () => {}});
+    }, 3000);
+}
+
 changerOnglet('creation');
 document.getElementById('creation-form').addEventListener('submit', creerCompte);
 document.getElementById('connexion-form').addEventListener('submit', seConnecter);
+document.getElementById('recuperation-form').addEventListener('submit', recupererMotDePasse);
 document.getElementById('show-password').addEventListener('change', basculerMotDePasse);

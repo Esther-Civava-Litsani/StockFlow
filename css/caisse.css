@@ -1,259 +1,311 @@
-* { /* Appliquer box-sizing à tous les éléments */
-    box-sizing: border-box; /* Inclure padding et border dans la largeur/hauteur */
+/* Styles pour la page */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    background-color: #dfe7fa;
 }
 
-body { /* Styles pour le corps de la page */
-    margin: 0; /* Supprimer les marges par défaut */
-    font-family: "Segoe UI", Arial, sans-serif; /* Police de caractères */
-    background: #f5f7fb; /* Couleur de fond */
-    display: flex; /* Utiliser flexbox pour la mise en page */
-    min-height: 100vh; /* Hauteur minimale de la fenêtre */
-    color: #172a4d; /* Couleur du texte */
+/* Styles pour la barre */
+.barre {
+    width: 250px;
+    background-color: #b7c8df;
+    height: 100vh;
+    padding: 25px;
+    border: 10px solid #eceff4;
+    border-radius: 20px;
 }
 
-.barreLaterale { /* Styles pour la barre latérale */
-    width: 240px; /* Largeur fixe */
-    background: #ffffff; /* Fond blanc */
-    min-height: 100vh; /* Hauteur min de la fenêtre */
-    padding: 24px 20px; /* Espacement interne */
-    border-right: 1px solid #eceff4; /* Bordure droite */
+/* Styles pour le logo et l'image */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #16346c;
+    font-size: 20px;
 }
 
-.barreLaterale .logo { /* Styles pour le logo dans la barre */
-    display: flex; /* Flexbox pour aligner */
-    align-items: center; /* Centrer verticalement */
-    gap: 10px; /* Espacement entre éléments */
-    margin-bottom: 30px; /* Marge inférieure */
-    font-weight: 700; /* Texte en gras */
-    color: #1d3f7f; /* Couleur du texte */
-    font-size: 1.05rem; /* Taille de police */
+.logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 20px;
 }
 
-.barreLaterale .logo img { /* Styles pour l'image du logo */
-    width: 34px; /* Largeur */
-    height: 34px; /* Hauteur */
-    object-fit: contain; /* Ajuster l'image */
-    border-radius: 10px; /* Coins arrondis */
+/* Styles pour les liens du menu */
+.Menu {
+    display: block;
+    width: 90%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #16346c;
+    font-weight: 600;
 }
 
-.elementMenu { /* Styles pour les éléments du menu */
-    display: block; /* Afficher en bloc */
-    width: 100%; /* Largeur pleine */
-    padding: 12px 14px; /* Espacement interne */
-    border-radius: 12px; /* Coins arrondis */
-    margin-bottom: 10px; /* Marge inférieure */
-    cursor: pointer; /* Curseur pointeur */
-    color: #5a6375; /* Couleur du texte */
-    text-decoration: none; /* Supprimer le soulignement */
-    font-weight: 600; /* Texte plus visible */
-    transition: background-color 0.2s ease, color 0.2s ease; /* Transition douce */
+/* Styles pour les liens du menu en survol */
+.Menu:hover,
+.Menu.active {
+    background-color: #445068;
+    color: white;
 }
 
-.elementMenu:hover,
-.elementMenu.active { /* Styles pour l'élément actif */
-    background-color: #e8f0ff; /* Fond bleu clair */
-    color: #2d6cdf; /* Texte bleu */
+/* Styles pour le contenu principal */
+.principal {
+    flex: 1;
+    padding: 30px 40px;
 }
 
-.principal { /* Styles pour le contenu principal */
-    flex: 1; /* Prendre l'espace restant */
-    padding: 28px 32px; /* Espacement interne */
+small {
+    color: #0b2048;
+    font-size: larger;
 }
 
-.conteneur { /* Conteneur principal pour la mise en page */
-    display: flex; /* Flexbox */
-    gap: 20px; /* Espacement entre colonnes */
-    align-items: flex-start; /* Aligner en haut */
+h2 {
+    font-size: 30px;
+    color: #112b4e;
+    margin-top: 0;
 }
 
-.gauche { /* Section gauche */
-    flex: 2; /* Plus large */
+/* Styles pour la mise en page générale */
+.cartes {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
-.droite { /* Section droite */
-    flex: 1; /* Moins large */
+.gauche {
+    flex: 2;
+    min-width: 320px;
 }
 
-.carte { /* Styles pour les cartes */
-    background: #ffffff; /* Fond blanc */
-    padding: 22px; /* Espacement interne */
-    border-radius: 16px; /* Coins arrondis */
-    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08); /* Ombre douce */
-    margin-bottom: 20px; /* Marge inférieure */
+.droite {
+    flex: 1;
+    min-width: 280px;
 }
 
-.carte h3 { /* Styles pour les titres des cartes */
-    margin-top: 0; /* Supprimer marge supérieure */
-    color: #172a4d; /* Couleur du titre */
+/* Styles pour le bloc code produit */
+.codes {
+    background-color: #b7c8df;
+    padding: 20px;
+    border-radius: 16px;
+    margin-top: 50px;
 }
 
-.ligne-champ { /* Ligne de champs et de boutons */
-    display: flex; /* Flex horizontal */
-    flex-wrap: wrap; /* Passage à la ligne si besoin */
-    gap: 10px; /* Espacement */
-    margin-bottom: 18px; /* Marge inférieure */
+.code {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.ligne-champ input { /* Styles pour les champs de ligne */
-    flex: 1; /* Prendre l'espace restant */
-    min-width: 180px; /* Largeur minimale */
+.code input {
+    flex: 1;
+    min-width: 180px;
 }
 
-.infos-produit { /* Bloc d'informations produit */
-    background: #f8fbff; /* Fond clair */
-    border: 1px solid #e4ecfa; /* Bordure légère */
-    border-radius: 14px; /* Coins arrondis */
-    padding: 18px; /* Espacement interne */
-    margin-bottom: 18px; /* Marge inférieure */
+.infos-produit {
+    border: 1px solid #e4ecfa;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
 }
 
-.info-ligne { /* Ligne d'information produit */
-    display: flex; /* Flex */
-    justify-content: space-between; /* Espacement entre label et valeur */
-    align-items: center; /* Centrer verticalement */
-    padding: 8px 0; /* Espacement vertical */
-    border-bottom: 1px solid #edf2f8; /* Séparateur */
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #edf2f8;
 }
 
-.info-ligne:last-child { /* Dernière ligne d'information */
-    border-bottom: none; /* Sans séparateur */
+.ligne-champ {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
 }
 
-.panier-table { /* Tableau du panier */
-    width: 100%; /* Largeur totale */
-    border-collapse: collapse; /* Fusion des bordures */
+.ligne-champ button {
+    min-width: 120px;
+    flex: 1;
 }
 
-.panier-table th,
-.panier-table td { /* Styles pour les cellules du tableau */
-    padding: 12px 10px; /* Espacement interne */
-    text-align: left; /* Alignement du texte */
-    border-bottom: 1px solid #eef1f7; /* Bordure de séparation */
+/* Styles pour les cartes et encadrements */
+.carre,
+.carte,
+.codes,
+.panier {
+    box-shadow: 0 10px 30px rgba(17, 43, 78, 0.08);
 }
 
-.panier-table th { /* Entêtes du panier */
-    background: #f7f9ff; /* Fond clair */
-    color: #5a6375; /* Couleur du texte */
-    font-weight: 700; /* Gras */
+.carre,
+.carte {
+    background-color: #b7c8df;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 50px;
 }
 
-.panier-table button { /* Boutons dans le tableau */
-    padding: 6px 10px; /* Espacement interne */
-    border-radius: 10px; /* Coins arrondis */
-    border: 1px solid transparent; /* Bordure par défaut */
-    cursor: pointer; /* Curseur pointeur */
-    font-size: 0.95rem; /* Taille de police */
+/* Styles pour le panier */
+.panier {
+    background-color: #b7c8df;
+    margin-top: 50px;
+    border-radius: 20px;
+    padding: 20px;
 }
 
-.panier-table .modifier-btn { /* Bouton modifier */
-    background: #f5f7ff; /* Fond clair */
-    color: #2d6cdf; /* Texte bleu */
-    border-color: #d4e1fb; /* Bordure claire */
+.panier table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
-.panier-table .supprimer-btn { /* Bouton supprimer */
-    background: #ffe7e9; /* Fond rouge clair */
-    color: #b91c1c; /* Texte rouge */
-    border-color: #f5c2c7; /* Bordure rouge clair */
+.panier th,
+.panier td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #b7c8df;
 }
 
-.resume-item { /* Ligne du résumé de paiement */
-    display: flex; /* Flex horizontal */
-    justify-content: space-between; /* Espacement */
-    align-items: center; /* Centrer verticalement */
-    padding: 12px 0; /* Espacement vertical */
-    border-bottom: 1px solid #eef1f7; /* Bordure de séparation */
+.panier td {
+    vertical-align: middle;
 }
 
-.resume-item:last-child { /* Dernière ligne du résumé */
-    border-bottom: none; /* Sans bordure */
+.panier th {
+    background: #b7c8df;
+    color: #112b4e;
+    font-weight: 700;
 }
 
-.resume-item input { /* Champs du résumé */
-    width: 130px; /* Largeur fixe */
-    padding: 10px; /* Espacement interne */
-    border: 1px solid #d4dbea; /* Bordure */
-    border-radius: 10px; /* Coins arrondis */
+.panier .action-cell {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
-.message { /* Message de paiement */
-    margin-top: 12px; /* Marge supérieure */
-    font-size: 0.95rem; /* Taille de police */
-    color: #d14343; /* Couleur rouge pour erreur */
-    min-height: 22px; /* Hauteur minimale */
+.panier button {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 18px;
 }
 
-.actions { /* Bloc des actions */
-    display: flex; /* Flex vertical */
-    flex-direction: column; /* Colonne */
-    gap: 10px; /* Espacement */
+.panier .modifier-btn {
+    background: #f5f7ff;
+    color: #2d6cdf;
+    border-color: #d4e1fb;
 }
 
-button { /* Styles généraux des boutons */
-    padding: 12px 16px; /* Espacement interne */
-    border: none; /* Pas de bordure */
-    border-radius: 12px; /* Coins arrondis */
-    background: #4da6ff; /* Fond bleu */
-    color: white; /* Texte blanc */
-    cursor: pointer; /* Curseur pointeur */
-    font-size: 1rem; /* Taille de police */
-    transition: background-color 0.2s ease; /* Transition */
+.panier .supprimer-btn {
+    background: #ffe7e9;
+    color: #b91c1c;
+    border-color: #f5c2c7;
 }
 
-button:hover { /* Hover bouton */
-    background: #3f8ce8; /* Fond plus foncé */
+/* Styles pour le résumé paiement */
+.resume {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #e4ecfa;
+    gap: 12px;
 }
 
-button.secondaire { /* Boutons secondaires */
-    background: #f5f7ff; /* Fond clair */
-    color: #2d6cdf; /* Texte bleu */
-    border: 1px solid #d4e1fb; /* Bordure claire */
+.resume:last-child {
+    border-bottom: none;
 }
 
-button.secondaire:hover { /* Hover boutons secondaires */
-    background: #e9efff; /* Fond plus clair */
+.resume span:last-child,
+.resume input {
+    min-width: 110px;
+    text-align: right;
 }
 
-.historique-item { /* Entrée d'historique */
-    background: #f8fbff; /* Fond clair */
-    border-radius: 14px; /* Coins arrondis */
-    padding: 12px 14px; /* Espacement interne */
-    margin-bottom: 10px; /* Marge inférieure */
-    color: #344359; /* Couleur du texte */
+.resume input {
+    width: 100%;
+    max-width: 150px;
+    padding: 10px;
+    border: 1px solid #d4dbea;
+    border-radius: 10px;
+    background: white;
 }
 
-@media (max-width: 960px) { /* Media query pour écrans moyens */
-    .conteneur { /* Conteneur responsive */
-        flex-direction: column; /* Colonne */
+.message {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #d14343;
+    min-height: 22px;
+}
+
+/* Styles pour les actions */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+button {
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    background: #4da6ff;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background: #3f8ce8;
+}
+
+button.secondaire {
+    background: #f5f7ff;
+    color: #2d6cdf;
+    border: 1px solid #d4e1fb;
+}
+
+button.secondaire:hover {
+    background: #e9efff;
+}
+
+/* Styles pour l'historique */
+.historique {
+    background-color: #b7c8df;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.historique .historique-item {
+    background: #e8efff;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    color: #1a356e;
+}
+
+/* Styles responsive */
+@media (max-width: 700px) {
+    body{
+        flex-direction: column;
     }
-
-    .droite { /* Droite responsive */
-        width: 100%; /* Largeur pleine */
-    }
-}
-
-@media (max-width: 760px) { /* Media query pour écrans petits */
-    body { /* Body responsive */
-        flex-direction: column; /* Colonne */
-    }
-
-    .barreLaterale { /* Barre responsive */
-        width: 100%; /* Largeur pleine */
-        min-height: auto; /* Hauteur auto */
-        border-right: none; /* Pas de bordure droite */
-        border-bottom: 1px solid #eceff4; /* Bordure inférieure */
-    }
-
-    .principal { /* Principal responsive */
-        padding: 22px; /* Espacement réduit */
-    }
-
-    .ligne-champ { /* Champs responsive */
-        flex-direction: column; /* Colonne */
-    }
-
-    .resume-item { /* Résumé responsive */
-        flex-direction: column; /* Colonne */
-        align-items: flex-start; /* Alignement gauche */
+    .barre{
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
     }
 }
