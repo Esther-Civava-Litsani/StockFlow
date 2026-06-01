@@ -25,7 +25,7 @@
         <a href="magasin.html" class="Menu"><i class="fas fa-store"></i> Magasin</a>
         <br><br>
         <!-- Bouton de déconnexion -->
-        <a href="deconnexion.html" class="Menu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a href="deconnexion.html" class="deconnexion" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
 
     <!-- Contenu principal de la page -->
@@ -37,31 +37,31 @@
         </div>
         <br><br>
         <!-- Statistiques -->
-        <div class="cartes">
+        <div class="Statistiques">
             <div class="carte">
                 <h2>PRODUITS</h2>
-                <h3 class="valeur" id="produits">0</h3>
+                <h3 id="produits">0</h3>
             </div>
 
             <div class="carte">
                 <h2>VENTES AUJOURD'HUI</h2>
-                <h3 class="valeur" id="ventes">0</h3>
+                <h3 id="ventes">0</h3>
             </div>
 
             <div class="carte">
                     <h2>RECETTE DU JOUR</h2>
-                    <h3 class="valeur" id="recette">0</h3>
+                    <h3 id="recette">0</h3>
             </div>
         </div>
         <!-- Informations -->
-        <div class="sections">
+        <div class="Informations">
             <!-- Ruptures de stock -->
-            <div class="boite">
+            <div class="carte">
                 <h2><i class="fas fa-exclamation-triangle"></i> Ruptures de stock</h2>
                 <div id="ruptures"></div>
             </div>
             <!-- Produits bientôt expirés -->
-            <div class="boite">
+            <div class="carte">
                 <h2><i class="fas fa-clock"></i> Bientôt expirés</h2>
                 <div id="expires"></div>
             </div>

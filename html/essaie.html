@@ -2,54 +2,49 @@
 <html lang="fr"> <!-- Élément racine HTML avec langue française -->
 <head> <!-- Section d'en-tête du document -->
     <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Meta pour la responsivité -->
-    <title>StockFlow - Connexion</title> <!-- Titre de la page -->
-    <link rel="stylesheet" href="../css/connexion.css"> <!-- Lien vers la feuille de style CSS -->
+    <title>StockFlow - Magasin</title> <!-- Titre de la page -->
+    <link rel="stylesheet" href="../css/magasin.css"> <!-- Lien vers la feuille de style CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
 </head> <!-- Fin de la section head -->
 <body> <!-- Corps du document -->
-    <div class="tout"> <!-- Conteneur principal -->
-        <div class="logo"> <!-- Conteneur du logo -->
-            <img src="../Logo/logo.png" alt="logo StockFlow"> <!-- Image du logo -->
-            <h1>StockFlow</h1> <!-- Titre principal -->
-        </div> <!-- Fin du conteneur logo -->
 
-        <p>Gérez votre boutique, votre stock et votre caisse en toute simplicité.</p> <!-- Description -->
+<!-- Barre latérale de navigation -->
+<div class="barreLaterale"> <!-- Conteneur de la barre latérale -->
+    <!-- Logo de l'application -->
+    <div class="logo"> <!-- Conteneur du logo -->
+        <img src="../Logo/logo.png" alt="Logo StockFlow"> <!-- Image du logo -->
+        <span>StockFlow</span> <!-- Texte du logo -->
+    </div> <!-- Fin du conteneur logo -->
 
-        <div class="emplacement"> <!-- Conteneur pour les boutons d'onglets -->
-            <button type="button" class="bouton" data-tab="connexion" onclick="changerOnglet('connexion')">Connexion</button> <!-- Bouton pour Connexion -->
-            <button type="button" class="bouton active" data-tab="creation" onclick="changerOnglet('creation')">Créer ma boutique</button> <!-- Bouton actif pour Créer -->
-        </div> <!-- Fin du conteneur emplacement -->
+    <!-- Éléments du menu -->
+    <a href="accueil.html" class="elementMenu"><i class="fas fa-home"></i> Accueil</a> <!-- Élément menu pour Accueil -->
+    <a href="caisse.html" class="elementMenu"><i class="fas fa-cash-register"></i> Caisse</a> <!-- Élément menu pour Caisse -->
+    <a href="stock.html" class="elementMenu"><i class="fas fa-boxes"></i> Stock</a> <!-- Élément menu pour Stock -->
+    <a href="magasin.html" class="elementMenu active"><i class="fas fa-store"></i> Magasin</a> <!-- Élément menu actif pour Magasin -->
 
-        <div id="message"></div> <!-- Conteneur pour les messages -->
+    <br><br> <!-- Sauts de ligne pour espacement -->
+    <!-- Bouton de déconnexion -->
+    <div class="elementMenu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
+</div> <!-- Fin de la barre latérale -->
 
-        <form id="connexion-form"> <!-- Formulaire de connexion -->
-            <input id="connexion-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
-            <input id="connexion-password" type="password" placeholder="Mot de passe" required> <!-- Champ mot de passe -->
-            <button type="submit">Se connecter</button> <!-- Bouton soumettre -->
-            <a href="#" class="forgot-password-link" onclick="changerOnglet('recuperation'); return false;">Mot de passe oublié ?</a> <!-- Lien pour récupérer mot de passe -->
-        </form> <!-- Fin du formulaire connexion -->
+<!-- Contenu principal de la page -->
+<div class="principal"> <!-- Conteneur principal -->
+    <!-- En-tête de la page -->
+    <div class="entete"> <!-- Conteneur de l'en-tête -->
+        <small>Bonjour <i class="fas fa-hand-paper"></i></small> <!-- Salutation avec icône -->
+        <h1 id="nomBoutique">Nom de la boutique</h1> <!-- Titre avec ID pour le nom de la boutique -->
+    </div> <!-- Fin de l'en-tête -->
 
-        <form id="recuperation-form"> <!-- Formulaire de récupération -->
-            <input id="recuperation-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
-            <input id="recuperation-email" type="email" placeholder="Email" required> <!-- Champ email -->
-            <button type="submit">Récupérer mon mot de passe</button> <!-- Bouton soumettre -->
-            <a href="#" class="back-link" onclick="changerOnglet('connexion'); return false;">Retour à la connexion</a> <!-- Lien retour -->
-        </form> <!-- Fin du formulaire récupération -->
+    <!-- Carte principale -->
+    <div class="carte"> <!-- Carte pour le contenu -->
+        <h2>Magasin</h2> <!-- Titre de la carte -->
+        <p>Magasin actuel : <strong id="nomMagasin">Nom de la boutique</strong></p> <!-- Nom de la boutique connecté -->
+        <p>Email associé : <strong id="emailBoutique">email@exemple.com</strong></p> <!-- Email du propriétaire de la boutique -->
+    </div> <!-- Fin de la carte -->
+</div> <!-- Fin du contenu principal -->
 
-        <form id="creation-form"> <!-- Formulaire de création -->
-            <input id="creation-shop" type="text" placeholder="Nom de la boutique" required> <!-- Champ nom boutique -->
-            <input id="creation-email" type="email" placeholder="Email" required> <!-- Champ email -->
-            <input id="creation-password" type="password" placeholder="Mot de passe" required> <!-- Champ mot de passe -->
-            <small>6 caractères minimum</small> <!-- Note pour le mot de passe -->
-            <div class="show-password"> <!-- Conteneur pour afficher mot de passe -->
-                <input id="show-password" type="checkbox"> <!-- Checkbox -->
-                <label for="show-password">Afficher le mot de passe</label> <!-- Label -->
-            </div> <!-- Fin du conteneur -->
-            <button type="submit">Créer ma boutique</button> <!-- Bouton soumettre -->
-        </form> <!-- Fin du formulaire création -->
-    </div> <!-- Fin du conteneur tout -->
-
-    <script src="../js/connexion.js"></script> <!-- Script JavaScript pour la page -->
+<!-- Inclusion du script JavaScript -->
+<script src="../js/common.js"></script> <!-- Script partagé pour la connexion et la déconnexion -->
+<script src="../js/magasin.js"></script> <!-- Script JavaScript pour la page -->
 </body> <!-- Fin du corps -->
 </html> <!-- Fin du document HTML -->

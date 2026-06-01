@@ -4,256 +4,179 @@
 
 body { /* Styles pour le corps de la page */
     margin: 0; /* Supprimer les marges par défaut */
-    font-family: "Segoe UI", Arial, sans-serif; /* Police de caractères */
-    background: #f5f7fb; /* Couleur de fond */
-    display: flex; /* Utiliser flexbox pour la mise en page */
     min-height: 100vh; /* Hauteur minimale de la fenêtre */
-    color: #172a4d; /* Couleur du texte */
-}
-
-.barreLaterale { /* Styles pour la barre latérale */
-    width: 240px; /* Largeur fixe */
-    background: #ffffff; /* Fond blanc */
-    min-height: 100vh; /* Hauteur min de la fenêtre */
-    padding: 24px 20px; /* Espacement interne */
-    border-right: 1px solid #eceff4; /* Bordure droite */
-}
-
-.barreLaterale .logo { /* Styles pour le logo dans la barre */
-    display: flex; /* Flexbox pour aligner */
+    font-family: Georgia, 'Times New Roman', Times, serif; /* Police de caractères */
+    background: linear-gradient(135deg, #e7f1fd 0%, #f8fbff 100%); /* Fond dégradé */
+    display: flex; /* Utiliser flexbox */
+    justify-content: center; /* Centrer horizontalement */
     align-items: center; /* Centrer verticalement */
-    gap: 10px; /* Espacement entre éléments */
-    margin-bottom: 30px; /* Marge inférieure */
-    font-weight: 700; /* Texte en gras */
-    color: #1d3f7f; /* Couleur du texte */
-    font-size: 1.05rem; /* Taille de police */
 }
 
-.barreLaterale .logo img { /* Styles pour l'image du logo */
-    width: 34px; /* Largeur */
-    height: 34px; /* Hauteur */
+.tout { /* Styles pour le conteneur principal */
+    width: min(420px, calc(100vw - 32px)); /* Largeur maximale ou responsive */
+    background: #ffffff; /* Fond blanc */
+    padding: 28px; /* Espacement interne */
+    border-radius: 18px; /* Bordures arrondies */
+    box-shadow: 0 16px 40px rgba(22, 94, 211, 0.12); /* Ombre */
+    text-align: center; /* Texte centré */
+}
+
+.logo { /* Styles pour le logo */
+    display: inline-flex; /* Flexbox en ligne */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    gap: 14px; /* Espacement entre éléments */
+    margin-bottom: 18px; /* Marge inférieure */
+}
+
+.logo img { /* Styles pour l'image du logo */
+    width: 52px; /* Largeur */
+    height: 52px; /* Hauteur */
     object-fit: contain; /* Ajuster l'image */
-    border-radius: 10px; /* Coins arrondis */
+    margin-bottom: 0; /* Supprimer marge inférieure */
 }
 
-.elementMenu { /* Styles pour les éléments du menu */
-    display: block; /* Afficher en bloc */
-    width: 100%; /* Largeur pleine */
-    padding: 12px 14px; /* Espacement interne */
-    border-radius: 12px; /* Coins arrondis */
-    margin-bottom: 10px; /* Marge inférieure */
-    cursor: pointer; /* Curseur pointeur */
-    color: #5a6375; /* Couleur du texte */
-    text-decoration: none; /* Supprimer le soulignement */
-    font-weight: 600; /* Texte plus visible */
-    transition: background-color 0.2s ease, color 0.2s ease; /* Transition douce */
+.logo h1 { /* Styles pour le titre h1 du logo */
+    margin: 0; /* Supprimer marges */
+    font-size: 2rem; /* Taille de police */
+    color: #153d72; /* Couleur du texte */
 }
 
-.elementMenu:hover,
-.elementMenu.active { /* Styles pour l'élément actif */
-    background-color: #e8f0ff; /* Fond bleu clair */
-    color: #2d6cdf; /* Texte bleu */
-}
-
-.principal { /* Styles pour le contenu principal */
-    flex: 1; /* Prendre l'espace restant */
-    padding: 28px 32px; /* Espacement interne */
-}
-
-.conteneur { /* Conteneur principal pour la mise en page */
-    display: flex; /* Flexbox */
-    gap: 20px; /* Espacement entre colonnes */
-    align-items: flex-start; /* Aligner en haut */
-}
-
-.gauche { /* Section gauche */
-    flex: 2; /* Plus large */
-}
-
-.droite { /* Section droite */
-    flex: 1; /* Moins large */
-}
-
-.carte { /* Styles pour les cartes */
-    background: #ffffff; /* Fond blanc */
-    padding: 22px; /* Espacement interne */
-    border-radius: 16px; /* Coins arrondis */
-    box-shadow: 0 14px 32px rgba(17, 43, 74, 0.08); /* Ombre douce */
-    margin-bottom: 20px; /* Marge inférieure */
-}
-
-.carte h3 { /* Styles pour les titres des cartes */
-    margin-top: 0; /* Supprimer marge supérieure */
-    color: #172a4d; /* Couleur du titre */
-}
-
-.ligne-champ { /* Ligne de champs et de boutons */
-    display: flex; /* Flex horizontal */
-    flex-wrap: wrap; /* Passage à la ligne si besoin */
-    gap: 10px; /* Espacement */
-    margin-bottom: 18px; /* Marge inférieure */
-}
-
-.ligne-champ input { /* Styles pour les champs de ligne */
-    flex: 1; /* Prendre l'espace restant */
-    min-width: 180px; /* Largeur minimale */
-}
-
-.infos-produit { /* Bloc d'informations produit */
-    background: #f8fbff; /* Fond clair */
-    border: 1px solid #e4ecfa; /* Bordure légère */
-    border-radius: 14px; /* Coins arrondis */
-    padding: 18px; /* Espacement interne */
-    margin-bottom: 18px; /* Marge inférieure */
-}
-
-.info-ligne { /* Ligne d'information produit */
-    display: flex; /* Flex */
-    justify-content: space-between; /* Espacement entre label et valeur */
-    align-items: center; /* Centrer verticalement */
-    padding: 8px 0; /* Espacement vertical */
-    border-bottom: 1px solid #edf2f8; /* Séparateur */
-}
-
-.info-ligne:last-child { /* Dernière ligne d'information */
-    border-bottom: none; /* Sans séparateur */
-}
-
-.panier-table { /* Tableau du panier */
-    width: 100%; /* Largeur totale */
-    border-collapse: collapse; /* Fusion des bordures */
-}
-
-.panier-table th,
-.panier-table td { /* Styles pour les cellules du tableau */
-    padding: 12px 10px; /* Espacement interne */
-    text-align: left; /* Alignement du texte */
-    border-bottom: 1px solid #eef1f7; /* Bordure de séparation */
-}
-
-.panier-table th { /* Entêtes du panier */
-    background: #f7f9ff; /* Fond clair */
-    color: #5a6375; /* Couleur du texte */
-    font-weight: 700; /* Gras */
-}
-
-.panier-table button { /* Boutons dans le tableau */
-    padding: 6px 10px; /* Espacement interne */
-    border-radius: 10px; /* Coins arrondis */
-    border: 1px solid transparent; /* Bordure par défaut */
-    cursor: pointer; /* Curseur pointeur */
-    font-size: 0.95rem; /* Taille de police */
-}
-
-.panier-table .modifier-btn { /* Bouton modifier */
-    background: #f5f7ff; /* Fond clair */
-    color: #2d6cdf; /* Texte bleu */
-    border-color: #d4e1fb; /* Bordure claire */
-}
-
-.panier-table .supprimer-btn { /* Bouton supprimer */
-    background: #ffe7e9; /* Fond rouge clair */
-    color: #b91c1c; /* Texte rouge */
-    border-color: #f5c2c7; /* Bordure rouge clair */
-}
-
-.resume-item { /* Ligne du résumé de paiement */
-    display: flex; /* Flex horizontal */
-    justify-content: space-between; /* Espacement */
-    align-items: center; /* Centrer verticalement */
-    padding: 12px 0; /* Espacement vertical */
-    border-bottom: 1px solid #eef1f7; /* Bordure de séparation */
-}
-
-.resume-item:last-child { /* Dernière ligne du résumé */
-    border-bottom: none; /* Sans bordure */
-}
-
-.resume-item input { /* Champs du résumé */
-    width: 130px; /* Largeur fixe */
-    padding: 10px; /* Espacement interne */
-    border: 1px solid #d4dbea; /* Bordure */
-    border-radius: 10px; /* Coins arrondis */
-}
-
-.message { /* Message de paiement */
-    margin-top: 12px; /* Marge supérieure */
-    font-size: 0.95rem; /* Taille de police */
-    color: #d14343; /* Couleur rouge pour erreur */
-    min-height: 22px; /* Hauteur minimale */
-}
-
-.actions { /* Bloc des actions */
-    display: flex; /* Flex vertical */
-    flex-direction: column; /* Colonne */
-    gap: 10px; /* Espacement */
-}
-
-button { /* Styles généraux des boutons */
-    padding: 12px 16px; /* Espacement interne */
-    border: none; /* Pas de bordure */
-    border-radius: 12px; /* Coins arrondis */
-    background: #4da6ff; /* Fond bleu */
-    color: white; /* Texte blanc */
-    cursor: pointer; /* Curseur pointeur */
+.tout p { /* Styles pour les paragraphes dans .tout */
+    margin: 16px 0 28px; /* Marges */
     font-size: 1rem; /* Taille de police */
+    color: #3f536e; /* Couleur du texte */
+    line-height: 1.5; /* Hauteur de ligne */
+}
+
+.emplacement { /* Styles pour le conteneur des boutons */
+    display: grid; /* Utiliser grid */
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    gap: 12px; /* Espacement entre colonnes */
+    margin-bottom: 24px; /* Marge inférieure */
+}
+
+.bouton { /* Styles pour les boutons */
+    border: 1px solid transparent; /* Bordure transparente */
+    background-color: #f0f5ff; /* Fond bleu clair */
+    color: #2f4f7f; /* Couleur du texte */
+    padding: 12px 16px; /* Espacement interne */
+    font-size: 0.96rem; /* Taille de police */
+    cursor: pointer; /* Curseur pointeur */
+    border-radius: 12px; /* Bordures arrondies */
+    transition: all 0.2s ease; /* Transitions */
+}
+
+.bouton:hover, /* Styles au survol */
+.bouton.active { /* Styles pour bouton actif */
+    border-color: #4da6ff; /* Couleur de bordure */
+    background-color: #eff7ff; /* Fond */
+    color: #1a4fe7; /* Couleur du texte */
+}
+
+form { /* Styles pour les formulaires */
+    display: none; /* Masquer par défaut */
+    flex-direction: column; /* Direction verticale */
+    gap: 14px; /* Espacement entre éléments */
+}
+
+form.active { /* Styles pour formulaire actif */
+    display: flex; /* Afficher */
+}
+
+input { /* Styles pour les champs input */
+    width: 100%; /* Largeur pleine */
+    padding: 13px 14px; /* Espacement interne */
+    border: 1px solid #d4dbea; /* Bordure */
+    border-radius: 12px; /* Bordures arrondies */
+    font-size: 1rem; /* Taille de police */
+    color: #1c2a48; /* Couleur du texte */
+    background: #f8fbff; /* Fond */
+}
+
+input:focus { /* Styles au focus pour input */
+    outline: none; /* Supprimer outline */
+    border-color: #7b9cff; /* Couleur de bordure */
+    box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.12); /* Ombre de focus */
+}
+
+a.forgot-password-link, /* Styles pour le lien mot de passe oublié */
+a.back-link { /* Styles pour le lien retour */
+    font-size: 0.85rem; /* Taille de police réduite */
+    color: #4da6ff; /* Couleur du lien */
+    text-decoration: none; /* Pas de soulignement */
+    cursor: pointer; /* Curseur pointeur */
+    transition: color 0.2s ease; /* Transition */
+}
+
+a.forgot-password-link:hover, /* Survol du lien mot de passe oublié */
+a.back-link:hover { /* Survol du lien retour */
+    color: #1a4fe7; /* Couleur au survol */
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.forgot-password-link { /* Styles spécifiques pour lien mot de passe oublié */
+    margin-top: 8px; /* Marge supérieure */
+}
+
+small { /* Styles pour les éléments small */
+    color: #576d8b; /* Couleur du texte */
+    text-align: left; /* Alignement à gauche */
+    display: block; /* Afficher en bloc */
+}
+
+button[type="submit"], /* Styles pour boutons submit */
+button[type="button"] { /* et button */
+    width: 100%; /* Largeur pleine */
+    padding: 14px 16px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+    border-radius: 12px; /* Bordures arrondies */
+    background-color: #4da6ff; /* Fond bleu */
+    color: white; /* Texte blanc */
+    font-size: 1rem; /* Taille de police */
+    font-weight: 700; /* Gras */
+    cursor: pointer; /* Curseur pointeur */
     transition: background-color 0.2s ease; /* Transition */
 }
 
-button:hover { /* Hover bouton */
-    background: #3f8ce8; /* Fond plus foncé */
+button[type="submit"]:hover, /* Styles au survol pour submit */
+button[type="button"]:hover { /* et button */
+    background-color: #3f8ce8; /* Fond plus foncé */
 }
 
-button.secondaire { /* Boutons secondaires */
-    background: #f5f7ff; /* Fond clair */
-    color: #2d6cdf; /* Texte bleu */
-    border: 1px solid #d4e1fb; /* Bordure claire */
+#message { /* Styles pour le message */
+    min-height: 22px; /* Hauteur minimale */
+    color: #155724; /* Couleur du texte */
+    background: #e2f3e9; /* Fond vert clair */
+    border: 1px solid #b7dfc1; /* Bordure */
+    border-radius: 12px; /* Bordures arrondies */
+    padding: 10px 12px; /* Espacement interne */
+    font-size: 0.95rem; /* Taille de police */
+    margin-bottom: 18px; /* Marge inférieure */
+    display: none; /* Masquer par défaut */
+    text-align: left; /* Alignement à gauche */
 }
 
-button.secondaire:hover { /* Hover boutons secondaires */
-    background: #e9efff; /* Fond plus clair */
+#message.error { /* Styles pour message d'erreur */
+    color: #842029; /* Couleur rouge */
+    background: #f8d7da; /* Fond rouge clair */
+    border-color: #f5c2c7; /* Bordure rouge */
 }
 
-.historique-item { /* Entrée d'historique */
-    background: #f8fbff; /* Fond clair */
-    border-radius: 14px; /* Coins arrondis */
-    padding: 12px 14px; /* Espacement interne */
-    margin-bottom: 10px; /* Marge inférieure */
-    color: #344359; /* Couleur du texte */
+.show-password { /* Styles pour afficher mot de passe */
+    display: flex; /* Flexbox */
+    align-items: center; /* Centrer verticalement */
+    justify-content: flex-start; /* Alignement à gauche */
+    gap: 8px; /* Espacement */
+    font-size: 0.95rem; /* Taille de police */
+    color: #4a5d7a; /* Couleur du texte */
 }
 
-@media (max-width: 960px) { /* Media query pour écrans moyens */
-    .conteneur { /* Conteneur responsive */
-        flex-direction: column; /* Colonne */
-    }
-
-    .droite { /* Droite responsive */
-        width: 100%; /* Largeur pleine */
-    }
-}
-
-@media (max-width: 760px) { /* Media query pour écrans petits */
-    body { /* Body responsive */
-        flex-direction: column; /* Colonne */
-    }
-
-    .barreLaterale { /* Barre responsive */
-        width: 100%; /* Largeur pleine */
-        min-height: auto; /* Hauteur auto */
-        border-right: none; /* Pas de bordure droite */
-        border-bottom: 1px solid #eceff4; /* Bordure inférieure */
-    }
-
-    .principal { /* Principal responsive */
+@media (max-width: 480px) { /* Media query pour écrans petits */
+    .tout { /* Styles pour .tout en responsive */
         padding: 22px; /* Espacement réduit */
     }
-
-    .ligne-champ { /* Champs responsive */
-        flex-direction: column; /* Colonne */
-    }
-
-    .resume-item { /* Résumé responsive */
-        flex-direction: column; /* Colonne */
-        align-items: flex-start; /* Alignement gauche */
+    .logo h1 { /* Styles pour h1 du logo en responsive */
+        font-size: 1.75rem; /* Taille réduite */
     }
 }
