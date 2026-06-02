@@ -1,0 +1,85 @@
+<?php
+    session_start();
+?>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockFlow - Connexion</title>
+    <link rel="stylesheet" href="../css/connexion.css">
+</head>
+
+<body class="connexion">
+    <div class="carte-connexion">
+        <div class="logo">
+            <img src="../Logo/logo.png" alt="logo StockFlow">
+            <h1>StockFlow</h1>
+        </div>
+        <p>Gérez votre boutique, votre stock et votre caisse en toute simplicité.</p>
+        <!-- pour aficher le message d'erreur -->
+        <?php if (isset($_GET['erreur'])): ?>
+        <div class="message-erreur">
+            <?php
+                    // Tableau des erreurs
+                    $erreurs = [
+                        'identifiants' =>
+                        'Nom de boutique ou mot de passe incorrect.',
+
+                        'champs_invalides' =>
+                        'Veuillez remplir tous les champs.',
+
+                        'existe_deja' =>
+                        'Cette boutique ou cet email existe déjà.',
+
+                        'email_inconnu' =>
+                        'Nom de boutique ou email incorrect.',
+                    ];
+                    echo htmlspecialchars(
+                        $erreurs[$_GET['erreur']]
+                        ?? 'Erreur.'
+                    );
+                ?>
+        </div>
+        <?php endif; ?>
+        <!-- les boutons -->
+        <div class="emplacement">
+            <button type="button" class="bouton-connexion" data-tab="connexion"
+                onclick="changerOnglet('connexion')">Connexion</button>
+            <button type="button" class="bouton-creation active" data-tab="creation"
+                onclick="changerOnglet('creation')">Créer ma boutique</button>
+        </div>
+        <!-- Formulaires de connexion -->
+        <form id="connexion-form" method="post" action="">
+            <input id="connexion-shop" type="text" placeholder="Nom de la boutique" required>
+            <input id="connexion-password" type="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+            <!-- Lien pour récupérer mot de passe -->
+            <a href="#" class="forgot-password-link" onclick="changerOnglet('recuperation'); return false;">Mot de passe
+                oublié ?</a>
+        </form>
+        <!-- Formulaire de récupération -->
+        <form id="recuperation-form">
+            <input id="recuperation-shop" type="text" placeholder="Nom de la boutique" required>
+            <input id="recuperation-email" type="email" placeholder="Email" required>
+            <button type="submit">Récupérer mon mot de passe</button>
+            <a href="#" class="back-link" onclick="changerOnglet('connexion'); return false;">Retour à la connexion</a>
+        </form>
+        <!-- Formulaire de création -->
+        <form id="creation-form">
+            <input id="creation-shop" type="text" placeholder="Nom de la boutique" required>
+            <input id="creation-email" type="email" placeholder="Email" required>
+            <input id="creation-password" type="password" placeholder="Mot de passe" required>
+            <small>6 caractères minimum</small>
+            <div class="show-password">
+                <input id="show-password" type="checkbox">
+                <label for="show-password">Afficher le mot de passe</label>
+            </div>
+            <button type="submit">Créer ma boutique</button>
+        </form>
+    </div>
+    <script src="../js/connexion.js"></script>
+</body>
+
+</html>
