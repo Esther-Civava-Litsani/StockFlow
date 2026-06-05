@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockFlow - Connexion</title>
-    <link rel="stylesheet" href="../css/connexion.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body class="connexion">
     <div class="carte-connexion">
@@ -54,6 +54,7 @@ session_start();
         <!-- Formulaire de récupération de mot de passe -->
         <form id="recuperation-form" method="POST"action="../backend/auth.php">
             <input type="hidden" name="action" value="mot_de_passe_oublie">
+            <input type="text" name="nomBoutique" placeholder="Nom de la boutique" required>
             <input type="email" name="emailBoutique" placeholder="Email" required>
             <button type="submit">Récupérer mon mot de passe</button>
             <a href="#" class="back-link" onclick="changerOnglet('connexion'); return false;">Retour à la connexion</a>

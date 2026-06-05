@@ -8,7 +8,7 @@ verifierConnexion();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockFlow - Caisse</title>
-    <link rel="stylesheet" href="../css/caisse.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <!-- Lien vers Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
 </head>
@@ -21,13 +21,13 @@ verifierConnexion();
             <span>StockFlow</span> 
         </div>
         <!-- Éléments du menu -->
-        <a href="accueil.html" class="Menu "><i class="fas fa-home"></i> Accueil</a>
-        <a href="caisse.html" class="Menu active"><i class="fas fa-cash-register"></i> Caisse</a>
-        <a href="stock.html" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
-        <a href="magasin.html" class="Menu"><i class="fas fa-store"></i> Magasin</a>
+        <a href="accueil.php" class="Menu"><i class="fas fa-home"></i> Accueil</a>
+        <a href="caisse.php" class="Menu active"><i class="fas fa-cash-register"></i> Caisse</a>
+        <a href="stock.php" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
+        <a href="magasin.php" class="Menu"><i class="fas fa-store"></i> Magasin</a>
         <br><br>
         <!-- Bouton de déconnexion -->
-        <a href="deconnexion.html" class="Menu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a href="../Backend/deconnexion.php" class="Menu"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
     <!-- Contenu principal de la page -->
     <div class="principal">
@@ -92,7 +92,6 @@ verifierConnexion();
             </div> 
         </div>
     </div>
-    <script src="../js/common.js"></script>
     <script src="../js/caisse.js"></script>
 </body>
 </html>

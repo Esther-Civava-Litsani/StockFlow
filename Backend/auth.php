@@ -39,8 +39,9 @@ if ($action === 'inscription') {
 
         $_SESSION['idBoutique'] = (int)$pdo->lastInsertId();
         $_SESSION['nomBoutique'] = $nomBoutique;
+        $_SESSION['emailBoutique'] = $emailBoutique;
 
-        header('Location: ../pages/dashboard.php');
+        header('Location: ../pages/accueil.php');
         exit;
 
     } catch (PDOException $e) {
@@ -78,7 +79,10 @@ if ($action === 'connexion') {
         $_SESSION['nomBoutique'] =
             $boutique['nomBoutique'];
 
-        header('Location: ../pages/dashboard.php');
+        $_SESSION['emailBoutique'] =
+            $boutique['emailBoutique'];
+
+        header('Location: ../pages/accueil.php');
         exit;
     }
 

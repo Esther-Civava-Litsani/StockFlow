@@ -2,10 +2,10 @@
 require_once '../Backend/connexion.php';
 verifierConnexion();
 // On récupère les boutiques liées à l'utilisateur connecté (par email)
-$email = $_SESSION['emailBoutique'] ?? '';
+$idBoutique = $_SESSION['idBoutique'] ?? 0;
 
-$req = $pdo->prepare("SELECT * FROM boutiques WHERE emailBoutique = ?");
-$req->execute([$email]);
+$req = $pdo->prepare("SELECT * FROM boutiques WHERE idBoutique = ?");
+$req->execute([$idBoutique]);
 $boutiques = $req->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ $boutiques = $req->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockFlow - Caisse</title>
-    <link rel="stylesheet" href="../css/caisse.css">
+    <title>StockFlow - Magasin</title>
+    <link rel="stylesheet" href="../css/styles.css">
     <!-- Lien vers Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
 </head>
@@ -27,13 +27,13 @@ $boutiques = $req->fetchAll();
             <span>StockFlow</span> 
         </div>
         <!-- Éléments du menu -->
-        <a href="accueil.html" class="Menu "><i class="fas fa-home"></i> Accueil</a>
-        <a href="caisse.html" class="Menu"><i class="fas fa-cash-register"></i> Caisse</a>
-        <a href="stock.html" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
-        <a href="magasin.html" class="Menu active"><i class="fas fa-store"></i> Magasin</a>
+        <a href="accueil.php" class="Menu"><i class="fas fa-home"></i> Accueil</a>
+        <a href="caisse.php" class="Menu"><i class="fas fa-cash-register"></i> Caisse</a>
+        <a href="stock.php" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
+        <a href="magasin.php" class="Menu active"><i class="fas fa-store"></i> Magasin</a>
         <br><br>
         <!-- Bouton de déconnexion -->
-        <a href="deconnexion.html" class="Menu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a href="../Backend/deconnexion.php" class="Menu"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
     <!-- Contenu principal de la page -->
     <div class="principal">
@@ -53,7 +53,7 @@ $boutiques = $req->fetchAll();
                 <!-- Date de création -->
                 <p><i class="fas fa-calendar"></i> Créé le <?= date('d/m/Y', strtotime($b['dateCreation'])) ?></p>
                 <!-- Bouton pour entrer dans le magasin -->
-                <button class="btn-entrer" onclick="window.location.href='set_session_boutique.php?id=<?= $b['idBoutique'] ?>'">
+                <button class="btn-entrer" onclick="alert('Accès au magasin disponible prochainement.')">
                     Entrer dans ce magasin
                 </button>
             </div>
