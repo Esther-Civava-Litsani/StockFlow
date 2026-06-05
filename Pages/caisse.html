@@ -1,3 +1,7 @@
+<?php
+require_once '../Backend/connexion.php';
+verifierConnexion();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -27,7 +31,7 @@
     </div>
     <!-- Contenu principal de la page -->
     <div class="principal">
-        Caisse <i class="fas fa-cash-register"></i></small>
+        <small>Caisse <i class="fas fa-cash-register"></i></small>
         <div class="cartes">
             <!-- Partie gauche -->
             <div class="gauche">
@@ -38,34 +42,22 @@
                         <input type="text" id="code" placeholder="Entrer le code du produit">
                         <button id="rechercher-btn">Rechercher</button>
                     </div>
-                    <!-- Bloc d'informations produit -->
-                    <div class="infos-produit"> 
-                        <div class="info"><span>Nom produit</span><span id="info-nom"></span></div>
-                        <div class="info"><span>Prix unitaire</span><span id="info-prix"></span></div>
-                        <div class="info"><span>Quantité disponible</span><span id="info-stock"></span></div>
-                        <div class="info"><span>Quantité à acheter</span><input type="number" id="quantite" value="1" min="1"></div>
-                    </div>
-                    <!-- Ligne de boutons -->
-                    <div class="ligne-champ"> 
-                        <button id="ajouter-panier-btn">Ajouter</button>
-                        <button id="annuler-produit-btn">Annuler</button>
-                    </div>
                 </div>
-            <!-- Panier -->
-            <div class="panier">
-                <h2>Panier</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Produit</th>
-                            <th>Quantité</th> 
-                            <th>Prix unitaire</th> 
-                            <th>Total ligne</th>
-                            <th>Action</th>
-                        </tr> 
-                    </thead> 
-                    <tbody id="panier-body"></tbody>
-                </table>
+                <!-- Panier -->
+                <div class="panier">
+                    <h2>Panier</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Qté</th> 
+                                <th>P.U</th> 
+                                <th>P.T</th>
+                                <th>Action</th>
+                            </tr> 
+                        </thead> 
+                        <tbody id="panier-body"></tbody>
+                    </table>
             </div>
         </div>
         <!-- Partie droite -->
@@ -78,18 +70,25 @@
                 <div class="resume"><span>Argent reçu</span><input type="number" id="montant-recu" value="0" min="0"></div>
                 <div class="resume"><span>Monnaie à rendre</span><span id="rendu">0</span></div>
                 <div class="message" id="message-paiement">&nbsp;</div>
-            </div>
-            <!-- Boutons -->
-            <div class="actions">
-                <h2>Actions</h2>
-                <button id="valider-btn">Valider vente</button>
-                <button id="annuler-btn" class="secondaire">Annuler</button>
-                <button id="imprimer-btn" class="secondaire"><i class="fas fa-print"></i> Imprimer facture</button>
+                <!-- Boutons -->
+                <div class="actions">
+                    <button id="valider-btn">Valider</button>
+                    <button id="annuler-btn" class="secondaire">Annuler</button>
+                </div>
             </div>
             <!-- Historique -->
             <div class="historique">
                 <h2>Historique</h2>
-                <div id="historique"></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Heure</th>
+                            <th>Montant</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historique-body"></tbody>
+                </table>
             </div> 
         </div>
     </div>

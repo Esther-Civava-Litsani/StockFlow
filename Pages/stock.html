@@ -1,79 +1,70 @@
-<!DOCTYPE html> <!-- Déclaration du type de document HTML -->
-<html lang="fr"> <!-- Élément racine HTML avec langue française -->
-<head> <!-- Section d'en-tête du document -->
-    <meta charset="UTF-8"> <!-- Encodage des caractères en UTF-8 -->
-    <title>StockFlow - Stock</title> <!-- Titre de la page -->
-    <link rel="stylesheet" href="../css/stock.css"> <!-- Lien vers la feuille de style CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Lien vers Font Awesome pour les icônes -->
-</head> <!-- Fin de la section head -->
-<body> <!-- Corps du document -->
-
-<!-- Barre latérale de navigation -->
-<div class="barreLaterale"> <!-- Conteneur de la barre latérale -->
-    <!-- Logo de l'application -->
-    <div class="logo"> <!-- Conteneur du logo -->
-        <img src="../Logo/logo.png" alt="Logo StockFlow"> <!-- Image du logo -->
-        <span>StockFlow</span> <!-- Texte du logo -->
-    </div> <!-- Fin du conteneur logo -->
-
-    <!-- Éléments du menu -->
-    <a href="accueil.html" class="elementMenu"><i class="fas fa-home"></i> Accueil</a> <!-- Élément menu pour Accueil -->
-    <a href="caisse.html" class="elementMenu"><i class="fas fa-cash-register"></i> Caisse</a> <!-- Élément menu pour Caisse -->
-    <a href="stock.html" class="elementMenu active"><i class="fas fa-boxes"></i> Stock</a> <!-- Élément menu actif pour Stock -->
-    <a href="magasin.html" class="elementMenu"><i class="fas fa-store"></i> Magasin</a> <!-- Élément menu pour Magasin -->
-
-    <br><br> <!-- Sauts de ligne pour espacement -->
-    <!-- Bouton de déconnexion -->
-    <div class="elementMenu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</div> <!-- Élément menu pour Déconnexion -->
-</div> <!-- Fin de la barre latérale -->
-
-<!-- Contenu principal de la page -->
-<div class="principal"> <!-- Conteneur principal -->
-    <!-- En-tête de la page -->
-    <div class="entete"> <!-- Conteneur de l'en-tête -->
-        <h1>Stock</h1> <!-- Titre de la page -->
-    </div> <!-- Fin de l'en-tête -->
-
-    <!-- Carte pour ajouter un produit -->
-    <div class="carte"> <!-- Carte pour le formulaire -->
-        <h2>Ajouter un produit</h2> <!-- Titre de la carte -->
-
-        <!-- Grille de formulaire -->
-        <div class="grilleFormulaire"> <!-- Conteneur grille pour les champs -->
-            <input type="text" id="nom" placeholder="Nom du produit"> <!-- Champ nom -->
-            <input type="number" id="achat" placeholder="Prix achat"> <!-- Champ prix achat -->
-            <input type="number" id="vente" placeholder="Prix vente"> <!-- Champ prix vente -->
-            <input type="number" id="quantite" placeholder="Quantité"> <!-- Champ quantité -->
-            <input type="date" id="expiration"> <!-- Champ date expiration -->
-        </div> <!-- Fin de la grille -->
-
-        <button id="ajouter-btn">Ajouter le produit</button> <!-- Bouton ajouter -->
-    </div> <!-- Fin de la carte -->
-
-    <!-- Carte pour la liste des produits -->
-    <div class="carte"> <!-- Carte pour la table -->
-        <h2>Liste des produits</h2> <!-- Titre de la carte -->
-
-        <!-- Table des produits -->
-        <table> <!-- Tableau -->
-            <thead> <!-- En-tête du tableau -->
-                <tr> <!-- Ligne d'en-tête -->
-                    <th>ID</th> <!-- Colonne ID -->
-                    <th>Produit</th> <!-- Colonne Produit -->
-                    <th>Prix achat</th> <!-- Colonne Prix achat -->
-                    <th>Prix vente</th> <!-- Colonne Prix vente -->
-                    <th>Bénéfice</th> <!-- Colonne Bénéfice -->
-                    <th>Quantité</th> <!-- Colonne Quantité -->
-                    <th>Expiration</th> <!-- Colonne Expiration -->
-                </tr> <!-- Fin de la ligne -->
-            </thead> <!-- Fin de l'en-tête -->
-            <tbody id="tableProduits"></tbody> <!-- Corps du tableau avec ID -->
-        </table> <!-- Fin du tableau -->
-    </div> <!-- Fin de la carte -->
-</div> <!-- Fin du contenu principal -->
-
-<!-- Inclusion du script JavaScript -->
-<script src="../js/common.js"></script> <!-- Script partagé pour la connexion et la déconnexion -->
-<script src="../js/stock.js"></script> <!-- Script JavaScript pour la page -->
-</body> <!-- Fin du corps -->
-</html> <!-- Fin du document HTML -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockFlow - Caisse</title>
+    <link rel="stylesheet" href="../css/caisse.css">
+    <!-- Lien vers Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+</head>
+<body>
+    <!-- Barre latérale de navigation -->
+    <div class="barre"> 
+        <!-- Logo -->
+        <div class="logo">
+            <img src="../Logo/logo.png" alt="Logo StockFlow">
+            <span>StockFlow</span> 
+        </div>
+        <!-- Éléments du menu -->
+        <a href="accueil.html" class="Menu "><i class="fas fa-home"></i> Accueil</a>
+        <a href="caisse.html" class="Menu"><i class="fas fa-cash-register"></i> Caisse</a>
+        <a href="stock.html" class="Menu active"><i class="fas fa-boxes"></i> Stock</a>
+        <a href="magasin.html" class="Menu "><i class="fas fa-store"></i> Magasin</a>
+        <br><br>
+        <!-- Bouton de déconnexion -->
+        <a href="deconnexion.html" class="Menu" onclick="confirmerDeconnexion(event)"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+    </div>
+    <!-- Contenu principal de la page -->
+    <div class="principal">
+        <small>Stock <i class="fas fa-boxes"></i></small>
+        <!-- Carte pour le formulaire -->
+        <div class="ajouter-produit">
+            <h2>Ajouter un produit</h2>
+            <!-- Grille de formulaire -->
+            <div class="grilleFormulaire"> 
+                <input type="text" id="nom" placeholder="Nom du produit">
+                <input type="number" id="achat" placeholder="Prix achat">
+                <input type="number" id="vente" placeholder="Prix vente">
+                <input type="number" id="quantite" placeholder="Quantité">
+                <input type="date" id="expiration">
+            </div> 
+            <button id="ajouter-btn">Ajouter le produit</button>
+            <p>ID et code produit générés automatiquement</p>
+        </div>
+        <!-- Carte pour la liste des produits -->
+        <div class="liste">
+            <div class="recherche">
+                <h2>Liste des produits</h2>
+                <input type="text" placeholder= "Rechercher un produit...">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th> <!--EX LE PREMIER PRODUIT SERA 1, LE DEUXIÈME SERA 2, ETC -->
+                        <th>Code produit</th> <!--EX  PRODUIT aura les 3premiere letre du nom en majuscule suivi d'un numéro de 4CHIFFRES en ordre de saisie -->
+                        <th>Produit</th> 
+                        <th>Prix achat</th>
+                        <th>Prix vente</th>
+                        <th>Bénéfice</th>
+                        <th>Quantité</th>
+                        <th>Expiration</th> 
+                    </tr>
+                </thead>
+                <tbody id="tableProduits"></tbody> 
+            </table> 
+        </div>
+    </div>    
+    <script src="../js/stock.js"></script>
+</body>
+</html>
