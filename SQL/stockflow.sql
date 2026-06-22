@@ -1,4 +1,4 @@
--- Création de la base de données StockFlow
+-- Creation de la base de donnees StockFlow
 CREATE DATABASE IF NOT EXISTS stockflow
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_general_ci;
@@ -43,4 +43,4 @@ CREATE TABLE IF NOT EXISTS ventes (
 
 -- Exemple de boutique de test
 INSERT IGNORE INTO boutiques (nomBoutique, emailBoutique, motDePasse)
-VALUES ('Ma Boutique', 'contact@boutique.test', '$2y$10$CwTycUXWue0Thq9StjUM0uJ8JCXG6CzQx4odbCylkLF4u4e3ipq3W');
+VALUES ('Etoile', 'esthercivava05@gmail.com', '123456');

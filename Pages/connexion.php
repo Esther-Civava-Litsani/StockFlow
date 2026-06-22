@@ -44,7 +44,7 @@ session_start();
             <button type="button" class="bouton-creation active" onclick="changerOnglet('creation')"> Créer ma boutique </button>
         </div>
         <!-- Formulaire de connexion -->
-        <form id="connexion-form" method="POST" action="../backend/auth.php">
+        <form id="connexion-form" method="POST" action="../Backend/auth.php">
             <input type="hidden" name="action" value="connexion">
             <input type="text" name="nomBoutique"placeholder="Nom de la boutique"required>
             <input type="password" name="motDePasse" placeholder="Mot de passe" required>
@@ -52,7 +52,7 @@ session_start();
             <a href="#" class="forgot-password-link" onclick="changerOnglet('recuperation'); return false;"> Mot de passe oublié ? </a>
         </form>
         <!-- Formulaire de récupération de mot de passe -->
-        <form id="recuperation-form" method="POST"action="../backend/auth.php">
+        <form id="recuperation-form" method="POST"action="../Backend/auth.php">
             <input type="hidden" name="action" value="mot_de_passe_oublie">
             <input type="text" name="nomBoutique" placeholder="Nom de la boutique" required>
             <input type="email" name="emailBoutique" placeholder="Email" required>
@@ -60,7 +60,7 @@ session_start();
             <a href="#" class="back-link" onclick="changerOnglet('connexion'); return false;">Retour à la connexion</a>
         </form>
         <!-- Formulaire de création de boutique -->
-        <form id="creation-form"method="POST" action="../backend/auth.php">
+        <form id="creation-form"method="POST" action="../Backend/auth.php">
             <input type="hidden"name="action"value="inscription">
             <input type="text"name="nomBoutique"placeholder="Nom de la boutique"required>
             <input type="email" name="emailBoutique" placeholder="Email"required>

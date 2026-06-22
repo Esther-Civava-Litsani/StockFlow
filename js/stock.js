@@ -1,9 +1,3 @@
-// ========================================
-// FICHIER : stock.js
-// Gestion du stock StockFlow
-// ========================================
-
-// Tableau des produits
 let produits = [];
 
 // Récupération des éléments
@@ -15,11 +9,8 @@ const expiration = document.getElementById("expiration");
 const boutonAjouter = document.getElementById("ajouter-btn");
 const tableProduits = document.getElementById("tableProduits");
 const champRecherche = document.querySelector(".recherche input");
-
-// ========================================
 // Génération du code produit
-// Exemple : CHO0001
-// ========================================
+
 function genererCodeProduit(nomProduit, numero) {
 
     let prefixe = nomProduit
@@ -31,10 +22,8 @@ function genererCodeProduit(nomProduit, numero) {
 
     return prefixe + numeroFormatte;
 }
-
-// ========================================
 // Affichage des produits
-// ========================================
+
 function afficherProduits(liste = produits) {
 
     tableProduits.innerHTML = "";
@@ -67,10 +56,7 @@ function afficherProduits(liste = produits) {
         `;
     }
 }
-
-// ========================================
 // Ajout produit
-// ========================================
 boutonAjouter.addEventListener("click", () => {
 
     if (
@@ -120,10 +106,7 @@ boutonAjouter.addEventListener("click", () => {
     quantite.value = "";
     expiration.value = "";
 });
-
-// ========================================
 // Recherche produit
-// ========================================
 champRecherche.addEventListener("keyup", () => {
 
     let texte = champRecherche.value.toLowerCase();
@@ -135,8 +118,5 @@ champRecherche.addEventListener("keyup", () => {
 
     afficherProduits(resultat);
 });
-
-// ========================================
 // Premier affichage
-// ========================================
 afficherProduits();

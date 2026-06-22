@@ -24,7 +24,6 @@ verifierConnexion();
         <a href="accueil.php" class="Menu"><i class="fas fa-home"></i> Accueil</a>
         <a href="caisse.php" class="Menu"><i class="fas fa-cash-register"></i> Caisse</a>
         <a href="stock.php" class="Menu active"><i class="fas fa-boxes"></i> Stock</a>
-        <a href="magasin.php" class="Menu"><i class="fas fa-store"></i> Magasin</a>
         <br><br>
         <!-- Bouton de déconnexion -->
         <a href="../Backend/deconnexion.php" class="Menu"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>

@@ -9,9 +9,7 @@ verifierConnexion();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockFlow - Accueil</title>
     <link rel="stylesheet" href="../css/styles.css">
-
     <!-- Lien vers Font Awesome pour les icônes -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
 </head>
 <body>
@@ -26,51 +24,74 @@ verifierConnexion();
         <a href="accueil.php" class="Menu active"><i class="fas fa-home"></i> Accueil</a>
         <a href="caisse.php" class="Menu"><i class="fas fa-cash-register"></i> Caisse</a>
         <a href="stock.php" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
-        <a href="magasin.php" class="Menu"><i class="fas fa-store"></i> Magasin</a>
         <br><br>
         <!-- Bouton de déconnexion -->
-        <a href="../Backend/deconnexion.php" class="deconnexion"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a href="../Backend/deconnexion.php" class="Menu"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
-
     <!-- Contenu principal de la page -->
     <div class="principal">
-        <!-- En-tête de la page -->
-        <div class="entete">
-            <small>Bonjour <i class="fas fa-hand-paper"></i></small>
-            <h1 id="nomBoutique">Nom de la boutique</h1>
-        </div>
-        <br><br>
-        <!-- Statistiques -->
+        <small>Accueil <i class="fas fa-home"></i></small>
+        <h1 id="nomBoutique">Bienvenue à <?= htmlspecialchars($_SESSION['nomBoutique']) ?></h1>
+        <p>Voici un aperçu de votre boutique et de vos performances récentes.</p>
+        <!-- TABLEAU DE BORD -->
         <div class="Statistiques">
+            <h2>Tableau de bord</h2>
             <div class="carte">
                 <h2>PRODUITS</h2>
                 <h3 id="produits">0</h3>
             </div>
-
             <div class="carte">
                 <h2>VENTES AUJOURD'HUI</h2>
                 <h3 id="ventes">0</h3>
             </div>
-
             <div class="carte">
-                    <h2>RECETTE DU JOUR</h2>
-                    <h3 id="recette">0</h3>
+                <h2>RECETTE DU JOUR</h2>
+                <h3 id="recette">0</h3>
             </div>
         </div>
-        <!-- Informations -->
-        <div class="Informations">
-            <!-- Ruptures de stock -->
+        <div class="Statistiques">
+            <h2>Alertes</h2>
+            <!-- Produits en rupture -->
             <div class="carte">
-                <h2><i class="fas fa-exclamation-triangle"></i> Ruptures de stock</h2>
-                <div id="ruptures"></div>
+                <h2><i class="fas fa-exclamation-triangle"></i>Produits en rupture</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Reste</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ruptures"></tbody>
+                </table>
             </div>
             <!-- Produits bientôt expirés -->
             <div class="carte">
-                <h2><i class="fas fa-clock"></i> Bientôt expirés</h2>
-                <div id="expires"></div>
+                <h2><i class="fas fa-exclamation-triangle"></i>Produits bientôt ou expirés</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Produit</th>
+                            <th>Reste</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expires"></tbody>
+                </table>
             </div>
+        </div>        
+        <!-- HISTORIQUE DES VENTES de chaque jour seulement -->
+        <div class="Statistiques">
+            <h2><i class="fas fa-"></i>Historique des ventes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>N° Vente</th>
+                        <th>Date</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+                <tbody id="historiqueVentes"></tbody>
+            </table>
         </div>
-    </div>
-<script src="../js/accueil.js"></script>
+    <script src="../js/accueil.js"></script>
 </body>
 </html>
