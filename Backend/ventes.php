@@ -5,12 +5,12 @@ header('Content-Type: application/json; charset=utf-8');
 $action = $_GET['action'] ?? $_POST['action'] ?? '';
 $idBoutique = $_SESSION['idBoutique'] ?? 0;
 
-if ($action === 'historique') {
-    if ($idBoutique <= 0) {
-        echo json_encode([]);
-        exit;
-    }
+if ($idBoutique <= 0) {
+    echo json_encode([]);
+    exit;
+}
 
+if ($action === 'historique') {
     $stmt = $pdo->prepare(
         'SELECT idVente AS numeroVente, dateVente, montantTotal
          FROM ventes
@@ -20,6 +20,74 @@ if ($action === 'historique') {
     );
     $stmt->execute([$idBoutique]);
     echo json_encode($stmt->fetchAll());
+    exit;
+}
+
+if ($action === 'historique_journalier') {
+    $stmt = $pdo->prepare(
+        'SELECT DATE(dateVente) AS dateVente, SUM(montantTotal) AS montantTotal
+         FROM ventes
+         WHERE idBoutique = ?
+         GROUP BY DATE(dateVente)
+         ORDER BY DATE(dateVente) DESC'
+    );
+    $stmt->execute([$idBoutique]);
+    echo json_encode($stmt->fetchAll());
+    exit;
+}
+
+if ($action === 'stats') {
+    $stmtProduits = $pdo->prepare('SELECT COUNT(*) FROM produits WHERE idBoutique = ?');
+    $stmtProduits->execute([$idBoutique]);
+
+    $stmtVentes = $pdo->prepare(
+        'SELECT COUNT(*) FROM ventes WHERE idBoutique = ? AND DATE(dateVente) = CURRENT_DATE'
+    );
+    $stmtVentes->execute([$idBoutique]);
+
+    $stmtRecette = $pdo->prepare(
+        'SELECT COALESCE(SUM(montantTotal), 0) FROM ventes WHERE idBoutique = ? AND DATE(dateVente) = CURRENT_DATE'
+    );
+    $stmtRecette->execute([$idBoutique]);
+
+    echo json_encode([
+        'totalProduits' => (int)$stmtProduits->fetchColumn(),
+        'ventesDuJour' => (int)$stmtVentes->fetchColumn(),
+        'recetteDuJour' => (float)$stmtRecette->fetchColumn()
+    ]);
+    exit;
+}
+
+if ($action === 'alertes') {
+    $stmtRupture = $pdo->prepare(
+        'SELECT idProduit, nomProduit, quantite FROM produits WHERE idBoutique = ? AND quantite = 0 ORDER BY nomProduit ASC'
+    );
+    $stmtRupture->execute([$idBoutique]);
+    $ruptures = $stmtRupture->fetchAll();
+
+    $today = date('Y-m-d');
+    $stmtExpires = $pdo->prepare(
+        'SELECT idProduit, nomProduit, quantite, dateExpiration
+         FROM produits
+         WHERE idBoutique = ? AND dateExpiration IS NOT NULL
+         ORDER BY dateExpiration ASC'
+    );
+    $stmtExpires->execute([$idBoutique]);
+    $expires = [];
+    foreach ($stmtExpires->fetchAll() as $row) {
+        $date = new DateTime($row['dateExpiration']);
+        $todayDate = new DateTime($today);
+        $diff = (int)$todayDate->diff($date)->format('%r%a');
+        if ($diff <= 7) {
+            $row['joursRestant'] = $diff;
+            $expires[] = $row;
+        }
+    }
+
+    echo json_encode([
+        'ruptures' => $ruptures,
+        'expires' => $expires
+    ]);
     exit;
 }
 
@@ -51,6 +119,18 @@ if ($action === 'valider') {
             $prix = floatval($item['prixUnitaire']);
             $montantLigne = $prix * $quantite;
 
+            if ($idProduit <= 0) {
+                throw new Exception('Produit invalide');
+            }
+
+            $check = $pdo->prepare('SELECT quantite FROM produits WHERE idProduit = ? AND idBoutique = ? LIMIT 1');
+            $check->execute([$idProduit, $idBoutique]);
+            $stock = $check->fetch();
+
+            if (!$stock || (int)$stock['quantite'] < $quantite) {
+                throw new Exception('Stock insuffisant pour un produit');
+            }
+
             $insert = $pdo->prepare(
                 'INSERT INTO ventes (idProduit, idBoutique, quantite, prixUnitaire, montantTotal)
                  VALUES (?, ?, ?, ?, ?)'
@@ -60,16 +140,15 @@ if ($action === 'valider') {
             $update = $pdo->prepare(
                 'UPDATE produits
                  SET quantite = GREATEST(quantite - ?, 0)
-                 WHERE idProduit = ?'
+                 WHERE idProduit = ? AND idBoutique = ?'
             );
-            $update->execute([$quantite, $idProduit]);
+            $update->execute([$quantite, $idProduit, $idBoutique]);
         }
 
         $pdo->commit();
-
         echo json_encode([
             'succes' => true,
-            'numeroVente' => date('YmdHis'),
+            'numeroVente' => date('YmdHis')
         ]);
     } catch (Exception $e) {
         $pdo->rollBack();

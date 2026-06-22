@@ -8,10 +8,11 @@ USE stockflow;
 -- Table des boutiques
 CREATE TABLE IF NOT EXISTS boutiques (
     idBoutique INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    nomBoutique VARCHAR(100) NOT NULL UNIQUE,
-    emailBoutique VARCHAR(150) NOT NULL UNIQUE,
+    nomBoutique VARCHAR(100) NOT NULL,
+    emailBoutique VARCHAR(150) NOT NULL,
     motDePasse VARCHAR(255) NOT NULL,
-    dateCreation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+    dateCreation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_boutique_email (emailBoutique, nomBoutique)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Table des produits

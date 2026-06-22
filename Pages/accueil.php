@@ -26,14 +26,12 @@ verifierConnexion();
         <a href="stock.php" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
         <br><br>
         <!-- Bouton de déconnexion -->
-        <a href="../Backend/deconnexion.php" class="Menu"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a href="#" class="Menu" id="logout-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
-    <!-- Contenu principal de la page -->
     <div class="principal">
         <small>Accueil <i class="fas fa-home"></i></small>
         <h1 id="nomBoutique">Bienvenue à <?= htmlspecialchars($_SESSION['nomBoutique']) ?></h1>
         <p>Voici un aperçu de votre boutique et de vos performances récentes.</p>
-        <!-- TABLEAU DE BORD -->
         <div class="Statistiques">
             <h2>Tableau de bord</h2>
             <div class="carte">
@@ -51,9 +49,8 @@ verifierConnexion();
         </div>
         <div class="Statistiques">
             <h2>Alertes</h2>
-            <!-- Produits en rupture -->
             <div class="carte">
-                <h2><i class="fas fa-exclamation-triangle"></i>Produits en rupture</h2>
+                <h2><i class="fas fa-exclamation-triangle"></i> Produits en rupture</h2>
                 <table>
                     <thead>
                         <tr>
@@ -64,34 +61,32 @@ verifierConnexion();
                     <tbody id="ruptures"></tbody>
                 </table>
             </div>
-            <!-- Produits bientôt expirés -->
             <div class="carte">
-                <h2><i class="fas fa-exclamation-triangle"></i>Produits bientôt ou expirés</h2>
+                <h2><i class="fas fa-exclamation-triangle"></i> Produits bientôt ou expirés</h2>
                 <table>
                     <thead>
                         <tr>
                             <th>Produit</th>
-                            <th>Reste</th>
+                            <th>Jours</th>
                         </tr>
                     </thead>
                     <tbody id="expires"></tbody>
                 </table>
             </div>
-        </div>        
-        <!-- HISTORIQUE DES VENTES de chaque jour seulement -->
+        </div>
         <div class="Statistiques">
-            <h2><i class="fas fa-"></i>Historique des ventes</h2>
+            <h2>Historique des ventes</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>N° Vente</th>
                         <th>Date</th>
-                        <th>Montant</th>
+                        <th>Montant total</th>
                     </tr>
                 </thead>
                 <tbody id="historiqueVentes"></tbody>
             </table>
         </div>
+    </div>
     <script src="../js/accueil.js"></script>
 </body>
 </html>

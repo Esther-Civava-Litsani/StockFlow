@@ -1,6 +1,6 @@
 let produits = [];
+let produitEnEdition = null;
 
-// Récupération des éléments
 const nom = document.getElementById("nom");
 const achat = document.getElementById("achat");
 const vente = document.getElementById("vente");
@@ -8,115 +8,135 @@ const quantite = document.getElementById("quantite");
 const expiration = document.getElementById("expiration");
 const boutonAjouter = document.getElementById("ajouter-btn");
 const tableProduits = document.getElementById("tableProduits");
-const champRecherche = document.querySelector(".recherche input");
-// Génération du code produit
+const champRecherche = document.getElementById("recherche-produit");
 
-function genererCodeProduit(nomProduit, numero) {
-
-    let prefixe = nomProduit
-        .substring(0, 3)
-        .toUpperCase()
-        .padEnd(3, "X");
-
-    let numeroFormatte = String(numero).padStart(4, "0");
-
-    return prefixe + numeroFormatte;
-}
-// Affichage des produits
-
-function afficherProduits(liste = produits) {
-
-    tableProduits.innerHTML = "";
-
-    liste.forEach((produit, index) => {
-
-        let ligne = `
-            <tr>
-                <td>${index + 1}</td>
-                <td>${produit.code}</td>
-                <td>${produit.nom}</td>
-                <td>${produit.prixAchat}</td>
-                <td>${produit.prixVente}</td>
-                <td>${produit.benefice}</td>
-                <td>${produit.quantite}</td>
-                <td>${produit.expiration || "-"}</td>
-            </tr>
-        `;
-
-        tableProduits.innerHTML += ligne;
-    });
-
-    if (liste.length === 0) {
-        tableProduits.innerHTML = `
-            <tr>
-                <td colspan="8" style="text-align:center;">
-                    Aucun produit trouvé
-                </td>
-            </tr>
-        `;
-    }
-}
-// Ajout produit
-boutonAjouter.addEventListener("click", () => {
-
-    if (
-        nom.value.trim() === "" ||
-        achat.value === "" ||
-        vente.value === "" ||
-        quantite.value === ""
-    ) {
-        alert("Veuillez remplir tous les champs obligatoires.");
-        return;
-    }
-
-    let numeroProduit = produits.length + 1;
-
-    let produit = {
-
-        id: numeroProduit,
-
-        code: genererCodeProduit(
-            nom.value,
-            numeroProduit
-        ),
-
-        nom: nom.value,
-
-        prixAchat: Number(achat.value),
-
-        prixVente: Number(vente.value),
-
-        benefice:
-            Number(vente.value) -
-            Number(achat.value),
-
-        quantite: Number(quantite.value),
-
-        expiration: expiration.value
-    };
-
-    produits.push(produit);
-
-    afficherProduits();
-
-    // Réinitialisation
+function resetForm() {
+    produitEnEdition = null;
+    boutonAjouter.textContent = "Ajouter le produit";
     nom.value = "";
     achat.value = "";
     vente.value = "";
     quantite.value = "";
     expiration.value = "";
+}
+
+function afficherProduits(liste = produits) {
+    tableProduits.innerHTML = "";
+
+    if (liste.length === 0) {
+        tableProduits.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align:center;">Aucun produit trouvé</td>
+            </tr>
+        `;
+        return;
+    }
+
+    liste.forEach((produit) => {
+        const benefice = (Number(produit.prixVente) - Number(produit.prixAchat)).toFixed(2);
+        const ligne = `
+            <tr>
+                <td>${produit.idProduit}</td>
+                <td>${produit.codeProduit}</td>
+                <td>${produit.nomProduit}</td>
+                <td>${Number(produit.prixAchat).toFixed(2)}</td>
+                <td>${Number(produit.prixVente).toFixed(2)}</td>
+                <td>${benefice}</td>
+                <td>${produit.quantite}</td>
+                <td>${produit.dateExpiration || "-"}</td>
+                <td>
+                    <button onclick="editerProduit(${produit.idProduit})">Modifier</button>
+                    <button onclick="supprimerProduit(${produit.idProduit})">Supprimer</button>
+                </td>
+            </tr>
+        `;
+        tableProduits.innerHTML += ligne;
+    });
+}
+
+function chargerProduits() {
+    fetch('../Backend/produits.php?action=liste')
+        .then(r => r.json())
+        .then(data => {
+            produits = data;
+            afficherProduits();
+        });
+}
+
+function editerProduit(idProduit) {
+    const produit = produits.find(p => p.idProduit === idProduit);
+    if (!produit) return;
+    produitEnEdition = produit;
+    boutonAjouter.textContent = "Enregistrer les modifications";
+    nom.value = produit.nomProduit;
+    achat.value = produit.prixAchat;
+    vente.value = produit.prixVente;
+    quantite.value = produit.quantite;
+    expiration.value = produit.dateExpiration || "";
+}
+
+function supprimerProduit(idProduit) {
+    if (!confirm('Voulez-vous vraiment supprimer ce produit ?')) return;
+    const fd = new FormData();
+    fd.append('action', 'supprimer');
+    fd.append('idProduit', idProduit);
+    fetch('../Backend/produits.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(rep => {
+        if (rep.succes) {
+            chargerProduits();
+        } else {
+            alert(rep.message || 'Erreur lors de la suppression');
+        }
+    });
+}
+
+boutonAjouter.addEventListener('click', () => {
+    if (!nom.value.trim() || achat.value === '' || vente.value === '' || quantite.value === '') {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+    }
+
+    const fd = new FormData();
+    fd.append('nomProduit', nom.value.trim());
+    fd.append('prixAchat', achat.value);
+    fd.append('prixVente', vente.value);
+    fd.append('quantite', quantite.value);
+    fd.append('expiration', expiration.value);
+
+    if (produitEnEdition) {
+        fd.append('action', 'modifier');
+        fd.append('idProduit', produitEnEdition.idProduit);
+    } else {
+        fd.append('action', 'ajouter');
+    }
+
+    fetch('../Backend/produits.php', {
+        method: 'POST',
+        body: fd
+    })
+    .then(r => r.json())
+    .then(rep => {
+        if (rep.succes) {
+            resetForm();
+            chargerProduits();
+        } else {
+            alert(rep.message || 'Erreur');
+        }
+    });
 });
-// Recherche produit
-champRecherche.addEventListener("keyup", () => {
 
-    let texte = champRecherche.value.toLowerCase();
-
-    let resultat = produits.filter(produit =>
-        produit.nom.toLowerCase().includes(texte) ||
-        produit.code.toLowerCase().includes(texte)
+champRecherche.addEventListener('input', () => {
+    const texte = champRecherche.value.toLowerCase();
+    const resultat = produits.filter(produit =>
+        produit.nomProduit.toLowerCase().includes(texte) ||
+        produit.codeProduit.toLowerCase().includes(texte)
     );
-
     afficherProduits(resultat);
 });
-// Premier affichage
-afficherProduits();
+
+chargerProduits();
+resetForm();

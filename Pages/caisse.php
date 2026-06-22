@@ -26,7 +26,7 @@ verifierConnexion();
         <a href="stock.php" class="Menu"><i class="fas fa-boxes"></i> Stock</a>
         <br><br>
         <!-- Bouton de déconnexion -->
-        <a href="../Backend/deconnexion.php" class="Menu"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+        <a href="#" class="Menu" id="logout-link"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
     </div>
     <!-- Contenu principal de la page -->
     <div class="principal">
@@ -41,6 +41,7 @@ verifierConnexion();
                         <input type="text" id="code" placeholder="Entrer le code du produit">
                         <button id="rechercher-btn">Rechercher</button>
                     </div>
+                    <ul id="suggestions" class="suggestions"></ul>
                 </div>
                 <!-- Panier -->
                 <div class="panier">
@@ -92,5 +93,6 @@ verifierConnexion();
         </div>
     </div>
     <script src="../js/caisse.js"></script>
+    <script src="../js/accueil.js"></script>
 </body>
 </html>
