@@ -15,7 +15,7 @@ if ($action === 'liste') {
         'SELECT idProduit, codeProduit, nomProduit, prixAchat, prixVente, quantite, dateExpiration
          FROM produits
          WHERE idBoutique = ?
-         ORDER BY nomProduit ASC'
+         ORDER BY idProduit DESC'
     );
     $stmt->execute([$idBoutique]);
     echo json_encode($stmt->fetchAll());
@@ -72,10 +72,11 @@ if ($action === 'ajouter') {
     $prefixe = strtoupper(substr($nom, 0, 3));
     $prefixe = str_pad($prefixe, 3, 'X');
 
+    // Numéro séquentiel par boutique (ordre d'ajout)
     $countStmt = $pdo->prepare('SELECT COUNT(*) FROM produits WHERE idBoutique = ?');
     $countStmt->execute([$idBoutique]);
     $numero = (int)$countStmt->fetchColumn() + 1;
-    $codeProduit = $prefixe . str_pad($idBoutique, 3, '0', STR_PAD_LEFT) . str_pad($numero, 4, '0', STR_PAD_LEFT);
+    $codeProduit = $prefixe . str_pad($numero, 4, '0', STR_PAD_LEFT);
 
     $insert = $pdo->prepare(
         'INSERT INTO produits (codeProduit, nomProduit, prixAchat, prixVente, quantite, dateExpiration, idBoutique)

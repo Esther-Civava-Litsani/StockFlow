@@ -60,7 +60,7 @@ if ($action === 'stats') {
 
 if ($action === 'alertes') {
     $stmtRupture = $pdo->prepare(
-        'SELECT idProduit, nomProduit, quantite FROM produits WHERE idBoutique = ? AND quantite = 0 ORDER BY nomProduit ASC'
+        'SELECT idProduit, nomProduit, quantite FROM produits WHERE idBoutique = ? AND quantite <= 5 ORDER BY quantite ASC'
     );
     $stmtRupture->execute([$idBoutique]);
     $ruptures = $stmtRupture->fetchAll();
@@ -78,7 +78,8 @@ if ($action === 'alertes') {
         $date = new DateTime($row['dateExpiration']);
         $todayDate = new DateTime($today);
         $diff = (int)$todayDate->diff($date)->format('%r%a');
-        if ($diff <= 7) {
+        // afficher si expiré ou dans les 5 prochains jours
+        if ($diff <= 5) {
             $row['joursRestant'] = $diff;
             $expires[] = $row;
         }

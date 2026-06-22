@@ -34,9 +34,12 @@ function afficherProduits(liste = produits) {
 
     liste.forEach((produit) => {
         const benefice = (Number(produit.prixVente) - Number(produit.prixAchat)).toFixed(2);
+        // numéro d'affichage cohérent : 1..N chronologique (1 = premier ajouté)
+        const pos = produits.findIndex(p => p.idProduit === produit.idProduit);
+        const affichage = produits.length > 0 && pos >= 0 ? (produits.length - pos) : '';
         const ligne = `
             <tr>
-                <td>${produit.idProduit}</td>
+                <td>${affichage}</td>
                 <td>${produit.codeProduit}</td>
                 <td>${produit.nomProduit}</td>
                 <td>${Number(produit.prixAchat).toFixed(2)}</td>

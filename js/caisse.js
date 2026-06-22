@@ -62,11 +62,14 @@ function rechercherProduit() {
 
 function ajouterAuPanier() {
     if (!produitCourant) return;
-    const existe = panier.find(p => p.idProduit == produitCourant.idProduit);
-    if (existe) {
-        existe.quantite++;
+    const existeIndex = panier.findIndex(p => p.idProduit == produitCourant.idProduit);
+    if (existeIndex !== -1) {
+        // increment and move to top
+        panier[existeIndex].quantite++;
+        const item = panier.splice(existeIndex, 1)[0];
+        panier.unshift(item);
     } else {
-        panier.push({
+        panier.unshift({
             idProduit: produitCourant.idProduit,
             nomProduit: produitCourant.nomProduit,
             prixUnitaire: Number(produitCourant.prixVente),
