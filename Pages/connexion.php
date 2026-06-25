@@ -9,7 +9,7 @@ session_start();
     <title>StockFlow - Connexion</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="connexion">
+<body>
     <div class="carte-connexion">
         <div class="logo">
             <img src="../Logo/logo.png" alt="logo StockFlow">
@@ -36,10 +36,11 @@ session_start();
         <!--pour la connexion-->
         <form id="connexion-form" method="POST" action="../Backend/auth.php">
             <input type="hidden" name="action" value="connexion">
-            <input type="email" name="emailBoutique" placeholder="Email" required>
             <input type="text" name="nomBoutique" placeholder="Nom de la boutique" required>
+            <input type="email" name="emailBoutique" placeholder="Email" required>
             <input type="password" name="motDePasse" placeholder="Mot de passe" required>
             <button type="submit">Se connecter</button>
+            <br>
             <a href="#" class="forgot-password-link" onclick="changerOnglet('recuperation'); return false;">Mot de passe oublié ?</a>
         </form>
         <!--pour la récupération du mot de passe-->
@@ -56,7 +57,7 @@ session_start();
             <input type="email" name="emailBoutique" placeholder="Email" required>
             <input type="password" name="motDePasse" placeholder="Mot de passe" minlength="6" required>
             <input type="password" name="confirmationMotDePasse" id="confirmationMotDePasse" placeholder="Confirmer le mot de passe" required>
-            <small>6 caractères minimum</small>
+            <br><small>6 caractères minimum</small><br>
             <button type="submit">Créer ma boutique</button>
         </form>
     </div>

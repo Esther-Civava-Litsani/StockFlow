@@ -50,8 +50,8 @@ if ($action === 'inscription') {
 }
 
 if ($action === 'connexion') {
-    $emailBoutique = trim($_POST['emailBoutique'] ?? '');
     $nomBoutique = trim($_POST['nomBoutique'] ?? '');
+    $emailBoutique = trim($_POST['emailBoutique'] ?? '');
     $motDePasse = $_POST['motDePasse'] ?? '';
 
     $req = $pdo->prepare(

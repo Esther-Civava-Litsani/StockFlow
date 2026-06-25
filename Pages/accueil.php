@@ -32,49 +32,53 @@ verifierConnexion();
         <small>Accueil <i class="fas fa-home"></i></small>
         <h1 id="nomBoutique">Bienvenue à <?= htmlspecialchars($_SESSION['nomBoutique']) ?></h1>
         <p>Voici un aperçu de votre boutique et de vos performances récentes.</p>
-        <div class="Statistiques">
+        <div class="tout">
             <h2>Tableau de bord</h2>
-            <div class="carte">
-                <h2>PRODUITS</h2>
-                <h3 id="produits">0</h3>
-            </div>
-            <div class="carte">
-                <h2>VENTES AUJOURD'HUI</h2>
-                <h3 id="ventes">0</h3>
-            </div>
-            <div class="carte">
-                <h2>RECETTE DU JOUR</h2>
-                <h3 id="recette">0</h3>
+            <div class="Statistiques">
+                <div class="carte">
+                    <h2>Produits</h2>
+                    <h3 id="produits">0</h3>
+                </div>
+                <div class="carte">
+                    <h2>Ventes du jour</h2>
+                    <h3 id="ventes">0</h3>
+                </div>
+                <div class="carte">
+                    <h2>Recette du jour</h2>
+                    <h3 id="recette">0</h3>
+                </div>
             </div>
         </div>
-        <div class="Statistiques">
+        <div class="tout">
             <h2>Alertes</h2>
-            <div class="carte">
-                <h2><i class="fas fa-exclamation-triangle"></i> Produits en rupture</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Produit</th>
-                            <th>Reste</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ruptures"></tbody>
-                </table>
-            </div>
-            <div class="carte">
-                <h2><i class="fas fa-exclamation-triangle"></i> Produits bientôt ou expirés</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Produit</th>
-                            <th>Jours</th>
-                        </tr>
-                    </thead>
-                    <tbody id="expires"></tbody>
-                </table>
+            <div class="Statistiques">
+                <div class="carte">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Produits en rupture</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Reste</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ruptures"></tbody>
+                    </table>
+                </div>
+                <div class="carte">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Produits bientôt ou expirés</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produit</th>
+                                <th>Jours</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expires"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="Statistiques">
+            <div class="tout">
             <h2>Historique des ventes</h2>
             <table>
                 <thead>

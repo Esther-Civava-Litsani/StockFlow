@@ -31,12 +31,12 @@ verifierConnexion();
     <!-- Contenu principal de la page -->
     <div class="principal">
         <small>Caisse <i class="fas fa-cash-register"></i></small>
-        <div class="cartes">
+        <div class="Statistiques">
             <!-- Partie gauche -->
-            <div class="gauche">
+            <div class="un">
                 <!-- Zone Code produit -->
+                 <h2>Code produit</h2>
                 <div class="codes">
-                    <h2>Code produit</h2>
                     <div class="code">
                         <input type="text" id="code" placeholder="Entrer le code du produit">
                         <button id="rechercher-btn">Rechercher</button>
@@ -58,39 +58,40 @@ verifierConnexion();
                         </thead> 
                         <tbody id="panier-body"></tbody>
                     </table>
-            </div>
-        </div>
-        <!-- Partie droite -->
-        <div class="droite">
-            <!-- Résumé paiement -->
-            <div class="carte">
-                <h2>Résumé paiement</h2>
-                <div class="resume"><span>Nombre produits</span><span id="resume-count">0</span></div>
-                <div class="resume"><span>Montant total</span><span id="resume-total">0</span></div>
-                <div class="resume"><span>Argent reçu</span><input type="number" id="montant-recu" value="0" min="0"></div>
-                <div class="resume"><span>Monnaie à rendre</span><span id="rendu">0</span></div>
-                <div class="message" id="message-paiement">&nbsp;</div>
-                <!-- Boutons -->
-                <div class="actions">
-                    <button id="valider-btn">Valider</button>
-                    <button id="annuler-btn" class="secondaire">Annuler</button>
                 </div>
             </div>
-            <!-- Historique -->
-            <div class="historique">
-                <h2>Historique</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>N°</th>
-                            <th>Heure</th>
-                            <th>Montant</th>
-                        </tr>
-                    </thead>
-                    <tbody id="historique-body"></tbody>
-                </table>
-            </div> 
+            <!-- Partie droite -->
+            <div class="tout">
+                <!-- Résumé paiement -->
+                <h2>Résumé paiement</h2>
+                <div class="resumes">
+                    <div class="resume"><h4>Nombre produits</h4><h5 id="resume-count">0</h5></div>
+                    <div class="resume"><h4>Montant total</h4><h5 id="resume-total">0</h5></div>
+                    <div class="resume"><h4>Argent reçu</h4><input type="number" id="montant-recu" value="0" min="0"></div>
+                    <div class="resume"><h4>Monnaie à rendre</h4><h5 id="rendu">0</h5></div>
+                    <div class="message" id="message-paiement">&nbsp;</div>
+                    <!-- Boutons -->
+                    <div class="actions">
+                        <button id="valider-btn">Valider</button>
+                        <button id="annuler-btn" class="secondaire">Annuler</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- Historique -->
+        <div class="tout">
+            <h2>Historique</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Heure</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+                <tbody id="historique-body"></tbody>
+            </table>
+        </div> 
     </div>
     <script src="../js/caisse.js"></script>
     <script src="../js/accueil.js"></script>

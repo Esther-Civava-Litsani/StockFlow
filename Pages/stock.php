@@ -25,7 +25,7 @@ verifierConnexion();
     </div>
     <div class="principal">
         <small>Stock <i class="fas fa-boxes"></i></small>
-        <div class="ajouter-produit">
+        <div class="tout">
             <h2>Ajouter un produit</h2>
             <div class="grilleFormulaire">
                 <input type="text" id="nom" placeholder="Nom du produit">
@@ -35,9 +35,9 @@ verifierConnexion();
                 <input type="date" id="expiration">
             </div>
             <button id="ajouter-btn">Ajouter le produit</button>
-            <p>Code produit généré automatiquement</p>
+            <p class="ph">Code produit généré automatiquement</p>
         </div>
-        <div class="liste">
+        <div class="tout">
             <div class="recherche">
                 <h2>Liste des produits</h2>
                 <input type="text" id="recherche-produit" placeholder="Rechercher un produit...">
